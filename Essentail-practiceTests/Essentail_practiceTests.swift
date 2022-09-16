@@ -6,23 +6,7 @@
 //
 
 import XCTest
-@testable import Essentail_practice
-
-class RemoteFeedLoader {
-    let client : HttpClient
-    let url : URL
-    init(url: URL, client: HttpClient) {
-        self.client = client
-        self.url = url
-    }
-    func load(){
-        client.get(from:url)
-    }
-}
-
-protocol HttpClient {
-    func get(from url: URL)
-}
+import Essentail_practice
 
 
 class Essentail_practiceTests: XCTestCase {

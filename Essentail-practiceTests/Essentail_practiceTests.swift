@@ -14,14 +14,25 @@ class Essentail_practiceTests: XCTestCase {
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
         
-        XCTAssertNil(client.requestURL)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     func test_load_requestsDataFromURL() {
         let url = URL(string: "https://some-url.com")!
         let (sut, client) = makeSUT(url: url)
         
         sut.load()
-        XCTAssertEqual(client.requestURL, url)
+        XCTAssertEqual(client.requestedURLs, [url])
+    }
+    func test_loadTwice_requestsDataFromURLTwice(){
+        let url = URL(string: "https://some-url.com")!
+        let (sut, client) = makeSUT(url: url)
+        
+        sut.load()
+        sut.load()
+        
+        XCTAssertEqual(client.requestedURLs, [url,url])
+
+
     }
     
     // MARK: Helpers
@@ -34,9 +45,9 @@ class Essentail_practiceTests: XCTestCase {
     
     class HttpClientSpy : HttpClient {
         func get(from url: URL) {
-            requestURL = url
+            requestedURLs.append(url)
         }
-        var requestURL : URL?
+        var requestedURLs = [URL]()
 
     }
 

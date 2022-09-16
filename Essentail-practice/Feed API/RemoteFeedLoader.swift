@@ -10,9 +10,9 @@ import Foundation
 public protocol HttpClient {
     func get(from url: URL)
 }
-public class RemoteFeedLoader {
-    let client : HttpClient
+final public class RemoteFeedLoader {
     let url : URL
+    let client : HttpClient
     public init(url: URL, client: HttpClient) {
         self.client = client
         self.url = url

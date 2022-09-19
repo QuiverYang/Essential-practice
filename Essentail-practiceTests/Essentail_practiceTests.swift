@@ -40,11 +40,11 @@ class Essentail_practiceTests: XCTestCase {
         let clientError = NSError(domain: "test", code: 0)
         client.error = clientError
         
-        var capturedError : RemoteFeedLoader.Error?
-        sut.load { capturedError = $0 }
+        var capturedErrors = [RemoteFeedLoader.Error]()
+        sut.load { capturedErrors.append($0) }
         
         
-        XCTAssertEqual(capturedError, .connectivity)
+        XCTAssertEqual(capturedErrors, [.connectivity])
     }
     
     // MARK: Helpers

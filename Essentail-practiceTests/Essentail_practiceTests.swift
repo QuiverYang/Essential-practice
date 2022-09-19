@@ -55,15 +55,15 @@ class Essentail_practiceTests: XCTestCase {
     }
     
     private class HttpClientSpy : HttpClient {
-        var requestedURLs = [URL]()
-        var completions = [(Error)->Void]()
-        var error : Error?
+        private var messages = [(url: URL, completion: (Error)->Void)]()
+        var requestedURLs : [URL] {
+            return messages.map{$0.url}
+        }
         func get(from url: URL, completion : @escaping (Error) -> Void) {
-            requestedURLs.append(url)
-            completions.append(completion)
+            messages.append((url, completion))
         }
         func complete(with error: Error, at index: Int = 0) {
-            completions[index](error)
+            messages[index].completion(error)
         }
     }
 

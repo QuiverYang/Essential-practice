@@ -47,13 +47,15 @@ class Essentail_practiceTests: XCTestCase {
     }
     func test_loadDeliversErrorOnNon200HttpResponse(){
         let (sut, client) = makeSUT()
+        let samples = [199,201,300,400,500]
         
-        var capturedErrors = [RemoteFeedLoader.Error]()
-        sut.load { capturedErrors.append($0) }
+        samples.enumerated().forEach { index, code in
+            var capturedErrors = [RemoteFeedLoader.Error]()
+            sut.load { capturedErrors.append($0) }
+            client.complete(withStatusCode: code, at: index)
+            XCTAssertEqual(capturedErrors, [.invalidData])
+        }
         
-        client.complete(withStatusCode: 400)
-        
-        XCTAssertEqual(capturedErrors, [.invalidData])
     }
     
     // MARK: Helpers

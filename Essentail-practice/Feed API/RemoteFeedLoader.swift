@@ -7,8 +7,12 @@
 
 import Foundation
 
+public enum HTTPClientResult {
+    case success(HTTPURLResponse)
+    case failure(Error)
+}
 public protocol HttpClient {
-    func get(from url: URL, completion : @escaping (Error?, HTTPURLResponse?) -> Void)
+    func get(from url: URL, completion : @escaping (HTTPClientResult) -> Void)
 }
 final public class RemoteFeedLoader {
     let url : URL
@@ -23,10 +27,11 @@ final public class RemoteFeedLoader {
         self.client = client
     }
     public func load(completion : @escaping (Error) -> Void){
-        client.get(from:url) { error, response in
-            if response != nil {
+        client.get(from:url) { result in
+            switch result {
+            case .success:
                 completion(.invalidData)
-            } else {
+            case .failure:
                 completion(.connectivity)
             }
         }

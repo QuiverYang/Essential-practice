@@ -34,6 +34,18 @@ class Essentail_practiceTests: XCTestCase {
 
 
     }
+    func test_loadDeliversErrorOnClientError(){
+        let (sut, client) = makeSUT()
+        
+        let clientError = NSError(domain: "test", code: 0)
+        client.error = clientError
+        
+        var capturedError : RemoteFeedLoader.Error?
+        sut.load { capturedError = $0 }
+        
+        
+        XCTAssertEqual(capturedError, .connectivity)
+    }
     
     // MARK: Helpers
     
@@ -43,12 +55,15 @@ class Essentail_practiceTests: XCTestCase {
         return (sut, client)
     }
     
-    class HttpClientSpy : HttpClient {
-        func get(from url: URL) {
-            requestedURLs.append(url)
-        }
+    private class HttpClientSpy : HttpClient {
         var requestedURLs = [URL]()
-
+        var error : Error?
+        func get(from url: URL, completion : @escaping (Error) -> Void) {
+            requestedURLs.append(url)
+            if let error = error {
+                completion(error)
+            }
+        }
     }
 
 

@@ -26,6 +26,8 @@ final public class RemoteFeedLoader {
     }
     public func load(completion : @escaping (Result) -> Void){
         client.get(from:url) {[weak self] result in
+            // check if self is still exist
+            // if not, return to aviod unexpected client get been reiggered
             guard self != nil else {return}
             switch result {
             case let .success(data, res):

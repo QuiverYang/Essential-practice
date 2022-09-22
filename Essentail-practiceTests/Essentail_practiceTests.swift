@@ -100,10 +100,18 @@ class Essentail_practiceTests: XCTestCase {
     
     // MARK: Helpers
     
-    private func makeSUT(url: URL = URL(string: "https://some-url.com")!) -> (sut : RemoteFeedLoader, client: HttpClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://some-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut : RemoteFeedLoader, client: HttpClientSpy) {
         let client = HttpClientSpy()
         let sut = RemoteFeedLoader(url: url, client: client)
+        trackFroMemoryLeaks(sut, file: file, line: line)
+        trackFroMemoryLeaks(client, file: file, line: line)
         return (sut, client)
+    }
+    
+    private func trackFroMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line){
+        addTeardownBlock {
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak", file: file, line: line)
+        }
     }
     
     private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {

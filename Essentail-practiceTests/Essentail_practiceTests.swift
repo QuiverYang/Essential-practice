@@ -97,6 +97,20 @@ class Essentail_practiceTests: XCTestCase {
         }
     }
     
+    func test_load_doesNotDeliversResultAfterSUTInstanceHasBeenDeallocated(){
+        let url = URL(string: "http://some-url.com")!
+        let client = HttpClientSpy()
+        var sut : RemoteFeedLoader? = RemoteFeedLoader(url: url, client: client)
+        
+        var capturedResults = [RemoteFeedLoader.Result]()
+        sut?.load { capturedResults.append($0) }
+        
+        sut = nil
+        client.complete(withStatusCode: 200, data: makeItemJSON([]))
+        
+        XCTAssertTrue(capturedResults.isEmpty)
+    }
+    
     
     // MARK: Helpers
     

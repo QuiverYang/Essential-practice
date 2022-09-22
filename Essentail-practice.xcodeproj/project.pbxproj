@@ -58,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210F2FCD28DC3DF400F2231F /* Feed API */ = {
+			isa = PBXGroup;
+			children = (
+				21F3965C28C89387005B08CD /* Essentail_practiceTests.swift */,
+			);
+			path = "Feed API";
+			sourceTree = "<group>";
+		};
 		21F3964528C89387005B08CD = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +97,7 @@
 		21F3965B28C89387005B08CD /* Essentail-practiceTests */ = {
 			isa = PBXGroup;
 			children = (
-				21F3965C28C89387005B08CD /* Essentail_practiceTests.swift */,
+				210F2FCD28DC3DF400F2231F /* Feed API */,
 			);
 			path = "Essentail-practiceTests";
 			sourceTree = "<group>";

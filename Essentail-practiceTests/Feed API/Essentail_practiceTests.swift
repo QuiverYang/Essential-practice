@@ -37,7 +37,7 @@ class Essentail_practiceTests: XCTestCase {
     func test_loadDeliversErrorOnClientError(){
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithResult: .failure(.connectivity)) {
+        expect(sut, toCompleteWithResult: .failure(RemoteFeedLoader.Error.connectivity)) {
             let clientError = NSError(domain: "test", code: 0)
             client.complete(with: clientError)
         }
@@ -48,7 +48,7 @@ class Essentail_practiceTests: XCTestCase {
         let samples = [199,201,300,400,500]
         
         samples.enumerated().forEach { index, code in
-            expect(sut, toCompleteWithResult: .failure(.invalidData)) {
+            expect(sut, toCompleteWithResult: .failure(RemoteFeedLoader.Error.invalidData)) {
                 let json = makeItemJSON([])
                 client.complete(withStatusCode: code,data: json ,at: index)
             }
@@ -58,7 +58,7 @@ class Essentail_practiceTests: XCTestCase {
     func test_load_deliversErrorOn200HttpResponseWithInvalidJON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithResult: .failure(.invalidData)) {
+        expect(sut, toCompleteWithResult: .failure(RemoteFeedLoader.Error.invalidData)) {
             let invalidJsonData = Data("invalid json data".utf8)
             client.complete(withStatusCode: 200, data: invalidJsonData)
         }
@@ -152,7 +152,7 @@ class Essentail_practiceTests: XCTestCase {
             switch (recievedResult, expectedResult) {
             case let (.success(recievedItems), .success(expectedItems)):
                 XCTAssertEqual(recievedItems, expectedItems, file: file, line: line)
-            case let (.failure(recievedError), .failure(expectedError)):
+            case let (.failure(recievedError as RemoteFeedLoader.Error), .failure(expectedError as RemoteFeedLoader.Error)):
                 XCTAssertEqual(recievedError, expectedError)
             default:
                 XCTFail("Expected result:\(expectedResult) but got \(recievedResult) instead", file:file, line: line)

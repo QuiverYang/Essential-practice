@@ -8,7 +8,7 @@
 import Foundation
 
 
-final public class RemoteFeedLoader {
+final public class RemoteFeedLoader : FeedLoader {
     let url : URL
     let client : HttpClient
     
@@ -16,10 +16,8 @@ final public class RemoteFeedLoader {
         case connectivity
         case invalidData
     }
-    public enum Result : Equatable{
-        case success([FeedItem])
-        case failure(Error)
-    }
+    public typealias Result = LoadFeedResult<Error>
+    
     public init(url: URL, client: HttpClient) {
         self.url = url
         self.client = client

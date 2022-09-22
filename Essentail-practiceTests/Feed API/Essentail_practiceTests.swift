@@ -37,7 +37,7 @@ class Essentail_practiceTests: XCTestCase {
     func test_loadDeliversErrorOnClientError(){
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithResult: .failure(RemoteFeedLoader.Error.connectivity)) {
+        expect(sut, toCompleteWithResult: failure(.connectivity)) {
             let clientError = NSError(domain: "test", code: 0)
             client.complete(with: clientError)
         }
@@ -48,7 +48,7 @@ class Essentail_practiceTests: XCTestCase {
         let samples = [199,201,300,400,500]
         
         samples.enumerated().forEach { index, code in
-            expect(sut, toCompleteWithResult: .failure(RemoteFeedLoader.Error.invalidData)) {
+            expect(sut, toCompleteWithResult: failure(.invalidData)) {
                 let json = makeItemJSON([])
                 client.complete(withStatusCode: code,data: json ,at: index)
             }
@@ -58,7 +58,7 @@ class Essentail_practiceTests: XCTestCase {
     func test_load_deliversErrorOn200HttpResponseWithInvalidJON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithResult: .failure(RemoteFeedLoader.Error.invalidData)) {
+        expect(sut, toCompleteWithResult: failure(invalidData)) {
             let invalidJsonData = Data("invalid json data".utf8)
             client.complete(withStatusCode: 200, data: invalidJsonData)
         }
@@ -122,6 +122,10 @@ class Essentail_practiceTests: XCTestCase {
         return (sut, client)
     }
     
+    private func failure(_ error : RemoteFeedLoader.Error) -> RemoteFeedLoader.Result {
+        .failure(error)
+    }
+    
     private func trackFroMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line){
         addTeardownBlock { [weak instance] in
             XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak", file: file, line: line)
@@ -165,6 +169,7 @@ class Essentail_practiceTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         
     }
+    
     
     private class HttpClientSpy : HttpClient {
         private var messages = [(url: URL, completion: (HTTPClientResult)->Void)]()

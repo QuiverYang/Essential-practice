@@ -58,7 +58,7 @@ class Essentail_practiceTests: XCTestCase {
     func test_load_deliversErrorOn200HttpResponseWithInvalidJON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithResult: failure(invalidData)) {
+        expect(sut, toCompleteWithResult: failure(.invalidData)) {
             let invalidJsonData = Data("invalid json data".utf8)
             client.complete(withStatusCode: 200, data: invalidJsonData)
         }

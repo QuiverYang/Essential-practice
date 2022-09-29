@@ -11,18 +11,9 @@ import Essentail_practice
 class Essentail_practiceEndToEndTests: XCTestCase {
 
     func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {
-        let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
-        let client = URLSessionHTTPClient()
-        let loader = RemoteFeedLoader(url: testServerURL, client: client)
-        let exp = expectation(description: "wait for completion")
-        var recievedResult: LoadFeedResult?
-        loader.load { result in
-            recievedResult = result
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 10.0)
+        
 
-        switch recievedResult {
+        switch getFeedResult() {
         case let .success(items):
             XCTAssertEqual(items.count, 8)
             XCTAssertEqual(items[0], expectedItem(at: 0))
@@ -34,7 +25,7 @@ class Essentail_practiceEndToEndTests: XCTestCase {
             XCTAssertEqual(items[6], expectedItem(at: 6))
             XCTAssertEqual(items[7], expectedItem(at: 7))
             
-        case let .failure(error):
+        case let .failure(error)?:
             XCTFail("Expected successful feed result but got \(error) instead")
         default:
             XCTFail("Expected successful feed result but got no result")
@@ -44,6 +35,21 @@ class Essentail_practiceEndToEndTests: XCTestCase {
     }
     
     //Helpers:
+    
+    private func getFeedResult() -> LoadFeedResult?{
+        
+        let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
+        let client = URLSessionHTTPClient()
+        let loader = RemoteFeedLoader(url: testServerURL, client: client)
+        let exp = expectation(description: "wait for completion")
+        var recievedResult: LoadFeedResult?
+        loader.load { result in
+            recievedResult = result
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 10.0)
+        return recievedResult
+    }
     
     private func expectedItem(at index: Int) -> FeedItem{
         return FeedItem(id: id(at: index),

@@ -17,6 +17,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         super.setUp()
         URLProtocolStub.startInterceptingRequests()
     }
+    
     override func tearDown() {
         super.tearDown()
         URLProtocolStub.stopInterceptinRequests()

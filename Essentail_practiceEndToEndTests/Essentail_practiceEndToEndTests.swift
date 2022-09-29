@@ -11,8 +11,6 @@ import Essentail_practice
 class Essentail_practiceEndToEndTests: XCTestCase {
 
     func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {
-        
-
         switch getFeedResult() {
         case let .success(items):
             XCTAssertEqual(items.count, 8)
@@ -31,16 +29,17 @@ class Essentail_practiceEndToEndTests: XCTestCase {
             XCTFail("Expected successful feed result but got no result")
 
         }
-        
     }
     
     //Helpers:
     
-    private func getFeedResult() -> LoadFeedResult?{
+    private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> LoadFeedResult?{
         
         let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
         let client = URLSessionHTTPClient()
         let loader = RemoteFeedLoader(url: testServerURL, client: client)
+        trackFroMemoryLeaks(client,file: file, line: line)
+        trackFroMemoryLeaks(loader, file: file, line: line)
         let exp = expectation(description: "wait for completion")
         var recievedResult: LoadFeedResult?
         loader.load { result in

@@ -14,6 +14,7 @@
 		210F2FD428E5703800F2231F /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FD328E5703800F2231F /* URLSessionHTTPClient.swift */; };
 		210F2FDC28E58CE500F2231F /* Essentail_practiceEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FDB28E58CE500F2231F /* Essentail_practiceEndToEndTests.swift */; };
 		210F2FDD28E58CE500F2231F /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
+		210F2FE328E5D2E200F2231F /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FD128E2DD6900F2231F /* XCTestCase+MemoryLeakTracking.swift */; };
 		21F3965828C89387005B08CD /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
 		21F3965D28C89387005B08CD /* Essentail_practiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F3965C28C89387005B08CD /* Essentail_practiceTests.swift */; };
 		21F3965E28C89387005B08CD /* Essentail_practice.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F3965228C89387005B08CD /* Essentail_practice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -307,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				210F2FDC28E58CE500F2231F /* Essentail_practiceEndToEndTests.swift in Sources */,
+				210F2FE328E5D2E200F2231F /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

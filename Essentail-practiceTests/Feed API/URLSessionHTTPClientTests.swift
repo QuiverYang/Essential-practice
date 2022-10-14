@@ -61,7 +61,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     func test_getFromURL_succeedsWithEmptyDataOnHTTPURLResponseWithNilDataRequest() {
         let response = anyHttpURLResponse()
-        URLProtocolStub.stub(data: nil, response: response, error: nil)
+        URLProtocolStub.stub(data: nil, response: response, error: nil,requestObserver: nil)
         
         let sut = makeSUT()
         

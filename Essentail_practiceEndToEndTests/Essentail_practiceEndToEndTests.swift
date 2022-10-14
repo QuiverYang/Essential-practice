@@ -9,6 +9,16 @@ import XCTest
 import Essentail_practice
 
 class Essentail_practiceEndToEndTests: XCTestCase {
+    
+//    func demo() {
+//        let cache = URLCache(memoryCapacity: 10 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, directory: nil)
+//        let configuration = URLSessionConfiguration.default
+//        configuration.urlCache = cache
+//        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+//        URLCache.shared = cache
+//        let request = URLRequest(url: URL(string: "http://what-ever")!, cachePolicy: .returnCacheDataDontLoad)
+//        let session = URLSession(configuration: configuration)
+//    }
 
     func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {
         switch getFeedResult() {
@@ -36,7 +46,7 @@ class Essentail_practiceEndToEndTests: XCTestCase {
     private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> LoadFeedResult?{
         
         let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
-        let client = URLSessionHTTPClient()
+        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
         let loader = RemoteFeedLoader(url: testServerURL, client: client)
         trackFroMemoryLeaks(client,file: file, line: line)
         trackFroMemoryLeaks(loader, file: file, line: line)

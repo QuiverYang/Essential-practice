@@ -9,7 +9,7 @@ import XCTest
 import Essentail_practice
 
 
-class Essentail_practiceTests: XCTestCase {
+class LoadFeedFromRemoteUseCases: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()

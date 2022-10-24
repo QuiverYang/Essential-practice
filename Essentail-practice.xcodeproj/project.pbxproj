@@ -16,6 +16,8 @@
 		210F2FDD28E58CE500F2231F /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
 		210F2FE328E5D2E200F2231F /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FD128E2DD6900F2231F /* XCTestCase+MemoryLeakTracking.swift */; };
 		210F2FEA28FFA60C00F2231F /* CacheFeedUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FE928FFA60C00F2231F /* CacheFeedUseCaseTest.swift */; };
+		21DF304D29068932009AF601 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF304C29068932009AF601 /* LocalFeedLoader.swift */; };
+		21DF304F29068961009AF601 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF304E29068961009AF601 /* FeedStore.swift */; };
 		21F3965828C89387005B08CD /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
 		21F3965D28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F3965C28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift */; };
 		21F3965E28C89387005B08CD /* Essentail_practice.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F3965228C89387005B08CD /* Essentail_practice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,6 +52,8 @@
 		210F2FD928E58CE500F2231F /* Essentail_practiceEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Essentail_practiceEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		210F2FDB28E58CE500F2231F /* Essentail_practiceEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Essentail_practiceEndToEndTests.swift; sourceTree = "<group>"; };
 		210F2FE928FFA60C00F2231F /* CacheFeedUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTest.swift; sourceTree = "<group>"; };
+		21DF304C29068932009AF601 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
+		21DF304E29068961009AF601 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		21F3964F28C89387005B08CD /* Essentail_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentail_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F3965228C89387005B08CD /* Essentail_practice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Essentail_practice.h; sourceTree = "<group>"; };
 		21F3965728C89387005B08CD /* Essentail-practiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Essentail-practiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +123,15 @@
 			path = "Feed Cache";
 			sourceTree = "<group>";
 		};
+		21DF304B29068924009AF601 /* Feed Cache */ = {
+			isa = PBXGroup;
+			children = (
+				21DF304C29068932009AF601 /* LocalFeedLoader.swift */,
+				21DF304E29068961009AF601 /* FeedStore.swift */,
+			);
+			path = "Feed Cache";
+			sourceTree = "<group>";
+		};
 		21F3964528C89387005B08CD = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +155,7 @@
 		21F3965128C89387005B08CD /* Essentail-practice */ = {
 			isa = PBXGroup;
 			children = (
+				21DF304B29068924009AF601 /* Feed Cache */,
 				21F3966C28D45449005B08CD /* Feed API */,
 				21F3966728C893F1005B08CD /* Feed Feature */,
 				21F3965228C89387005B08CD /* Essentail_practice.h */,
@@ -330,6 +344,8 @@
 				210F2FCC28DC31F200F2231F /* FeedItemsMapper.swift in Sources */,
 				21F3966B28D30725005B08CD /* FeedLoader.swift in Sources */,
 				21F3966E28D45454005B08CD /* RemoteFeedLoader.swift in Sources */,
+				21DF304F29068961009AF601 /* FeedStore.swift in Sources */,
+				21DF304D29068932009AF601 /* LocalFeedLoader.swift in Sources */,
 				210F2FCA28DC31AD00F2231F /* HTTPClient.swift in Sources */,
 				21F3966928D306CA005B08CD /* FeedItem.swift in Sources */,
 				210F2FD428E5703800F2231F /* URLSessionHTTPClient.swift in Sources */,

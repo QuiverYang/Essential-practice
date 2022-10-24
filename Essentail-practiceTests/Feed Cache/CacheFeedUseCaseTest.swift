@@ -124,27 +124,27 @@ class CacheFeedUseCaseTest: XCTestCase {
     func test_save_doesNotDeliverDeletionErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = FeedStoreSpy()
         var sut : LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
-        var recievedError = [Error?]()
-        sut?.save([uniqueItem()]){recievedError.append($0)}
+        var recievedResult = [LocalFeedLoader.SaveResult]()
+        sut?.save([uniqueItem()]){recievedResult.append($0)}
         
         sut = nil
         store.completeDeletion(with: anyNSError())
         
-        XCTAssertTrue(recievedError.isEmpty)
+        XCTAssertTrue(recievedResult.isEmpty)
     }
     
     func test_savedoesNotDeleverInsertionErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = FeedStoreSpy()
         var sut : LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
         
-        var recievedError = [Error?]()
-        sut?.save([uniqueItem()]){recievedError.append($0)}
+        var recievedResult = [LocalFeedLoader.SaveResult]()
+        sut?.save([uniqueItem()]){recievedResult.append($0)}
         
         store.completeDeletionSuccessfully()
         sut = nil
         store.completeInsertion(with: anyNSError())
         
-        XCTAssertTrue(recievedError.isEmpty)
+        XCTAssertTrue(recievedResult.isEmpty)
     }
     
     //MARK: - Helpers

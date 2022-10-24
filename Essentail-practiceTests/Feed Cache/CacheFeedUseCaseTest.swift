@@ -54,11 +54,11 @@ class FeedStoreSpy : FeedStore {
         recievedMessages.append(.deletionCacheFeed)
     }
     
-    func completeDeletionWith(_ error: Error, at index: Int = 0) {
+    func completeDeletion(with error: Error, at index: Int = 0) {
         deletionCompletions[index](error)
     }
     
-    func completeInsertionWith(_ error: Error, at index: Int = 0) {
+    func completeInsertion(with error: Error, at index: Int = 0) {
         deletionCompletions[index](error)
     }
     
@@ -99,7 +99,7 @@ class CacheFeedUseCaseTest: XCTestCase {
         sut.save(items){ _ in }
         let deletionError = anyNSError()
         
-        store.completeDeletionWith(deletionError)
+        store.completeDeletion(with: deletionError)
         
         XCTAssertEqual(store.recievedMessages, [.deletionCacheFeed])
     }
@@ -120,7 +120,7 @@ class CacheFeedUseCaseTest: XCTestCase {
         let (sut, store) = makeSUT()
         let deletionError = anyNSError()
         expect(sut, toCompleteWithError: deletionError) {
-            store.completeDeletionWith(deletionError)
+            store.completeDeletion(with: deletionError)
 
         }
     }
@@ -131,7 +131,7 @@ class CacheFeedUseCaseTest: XCTestCase {
 
         expect(sut, toCompleteWithError: insertionError) {
             store.completeDeletionSuccessfully()
-            store.completeInsertionWith(insertionError)
+            store.completeInsertion(with: insertionError)
         }
     }
     

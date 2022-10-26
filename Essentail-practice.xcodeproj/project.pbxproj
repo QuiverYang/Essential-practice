@@ -19,6 +19,7 @@
 		21DF304D29068932009AF601 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF304C29068932009AF601 /* LocalFeedLoader.swift */; };
 		21DF304F29068961009AF601 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF304E29068961009AF601 /* FeedStore.swift */; };
 		21DF30512908E025009AF601 /* RemoteFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF30502908E025009AF601 /* RemoteFeedItem.swift */; };
+		21DF30532908E06E009AF601 /* LocalFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF30522908E06E009AF601 /* LocalFeedItem.swift */; };
 		21F3965828C89387005B08CD /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
 		21F3965D28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F3965C28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift */; };
 		21F3965E28C89387005B08CD /* Essentail_practice.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F3965228C89387005B08CD /* Essentail_practice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -56,6 +57,7 @@
 		21DF304C29068932009AF601 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		21DF304E29068961009AF601 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		21DF30502908E025009AF601 /* RemoteFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedItem.swift; sourceTree = "<group>"; };
+		21DF30522908E06E009AF601 /* LocalFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedItem.swift; sourceTree = "<group>"; };
 		21F3964F28C89387005B08CD /* Essentail_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentail_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F3965228C89387005B08CD /* Essentail_practice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Essentail_practice.h; sourceTree = "<group>"; };
 		21F3965728C89387005B08CD /* Essentail-practiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Essentail-practiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 			children = (
 				21DF304C29068932009AF601 /* LocalFeedLoader.swift */,
 				21DF304E29068961009AF601 /* FeedStore.swift */,
+				21DF30522908E06E009AF601 /* LocalFeedItem.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -272,7 +275,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					210F2FD828E58CE500F2231F = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -348,6 +351,7 @@
 				21F3966B28D30725005B08CD /* FeedLoader.swift in Sources */,
 				21DF30512908E025009AF601 /* RemoteFeedItem.swift in Sources */,
 				21F3966E28D45454005B08CD /* RemoteFeedLoader.swift in Sources */,
+				21DF30532908E06E009AF601 /* LocalFeedItem.swift in Sources */,
 				21DF304F29068961009AF601 /* FeedStore.swift in Sources */,
 				21DF304D29068932009AF601 /* LocalFeedLoader.swift in Sources */,
 				210F2FCA28DC31AD00F2231F /* HTTPClient.swift in Sources */,
@@ -388,6 +392,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = H7GN9P68XR;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -403,6 +408,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = H7GN9P68XR;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -447,6 +453,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -510,6 +517,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -539,6 +547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = H7GN9P68XR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -569,6 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = H7GN9P68XR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -597,6 +607,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = H7GN9P68XR;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -613,6 +624,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = H7GN9P68XR;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;

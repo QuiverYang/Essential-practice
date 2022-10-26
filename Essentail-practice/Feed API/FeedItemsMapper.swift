@@ -8,13 +8,6 @@
 import Foundation
 
 
-// api model
-internal struct RemoteFeedItem : Decodable{
-    public let id : UUID
-    public let description : String?
-    public let location : String?
-    public let image : URL
-}
 
 internal class FeedItemsMapper {
     private struct Root : Decodable {

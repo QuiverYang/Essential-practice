@@ -41,6 +41,10 @@ final class LoadFeedFromCacheUseCaseTest: XCTestCase {
         }
     }
     
+    func test_load_deliversImagesOnLessThanSevenDaysOldCache() {
+        let feed = uniqueFeeds()
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStoreSpy) {

@@ -9,11 +9,14 @@ import Foundation
 import Essentail_practice
 
 class FeedStoreSpy : FeedStore {
+
+    
     
 
     enum ReceivedMessage : Equatable{
         case deletionCacheFeed
         case insert([LocalFeedImage], Date)
+        case retrieval
     }
             
     private var deletionCompletions = [DeletionCompletion]()
@@ -46,7 +49,11 @@ class FeedStoreSpy : FeedStore {
     func insert(_ images: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
         insertionCompletions.append(completion)
         recievedMessages.append(.insert(images, timestamp))
-        
     }
+    
+    func retrieve() {
+        recievedMessages.append(.retrieval)
+    }
+    
     
 }

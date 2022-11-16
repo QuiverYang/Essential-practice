@@ -58,8 +58,9 @@ extension LocalFeedLoader {
                 completion(.success(feeds.toModels()))
             case .found, .empty:
                 completion(.success([]))
+            @unknown default: break
+
             }
-            
         }
     }
     

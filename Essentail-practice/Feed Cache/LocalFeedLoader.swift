@@ -21,13 +21,11 @@ private final class FeedCachePolicy {
 
 public final class LocalFeedLoader : FeedLoader{
     private let store : FeedStore
-    private let cachePolicy : FeedCachePolicy
     private let currentDate: () -> Date
 
     public init(store: FeedStore, currentDate: @escaping () -> Date) {
         self.store = store
         self.currentDate = currentDate
-        self.cachePolicy = FeedCachePolicy()
     }
     
     

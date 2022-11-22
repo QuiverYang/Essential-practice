@@ -26,6 +26,7 @@
 		21DF310E2924CACC009AF601 /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF310D2924CACC009AF601 /* FeedCacheTestHelpers.swift */; };
 		21DF31102924CB0B009AF601 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF310F2924CB0B009AF601 /* SharedTestHelpers.swift */; };
 		21DF311329272854009AF601 /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF311229272854009AF601 /* FeedCachePolicy.swift */; };
+		21DF3115292CAA18009AF601 /* CodableFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF3114292CAA18009AF601 /* CodableFeedStoreTests.swift */; };
 		21F3965828C89387005B08CD /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
 		21F3965D28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F3965C28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift */; };
 		21F3965E28C89387005B08CD /* Essentail_practice.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F3965228C89387005B08CD /* Essentail_practice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -70,6 +71,7 @@
 		21DF310D2924CACC009AF601 /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
 		21DF310F2924CB0B009AF601 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		21DF311229272854009AF601 /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
+		21DF3114292CAA18009AF601 /* CodableFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStoreTests.swift; sourceTree = "<group>"; };
 		21F3964F28C89387005B08CD /* Essentail_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentail_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F3965228C89387005B08CD /* Essentail_practice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Essentail_practice.h; sourceTree = "<group>"; };
 		21F3965728C89387005B08CD /* Essentail-practiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Essentail-practiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 				210F2FE928FFA60C00F2231F /* CacheFeedUseCaseTest.swift */,
 				21DF305429092628009AF601 /* LoadFeedFromCacheUseCaseTest.swift */,
 				21DF310B2923818F009AF601 /* ValidateCacheUseCaseTests.swift */,
+				21DF3114292CAA18009AF601 /* CodableFeedStoreTests.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21DF3115292CAA18009AF601 /* CodableFeedStoreTests.swift in Sources */,
 				21DF310E2924CACC009AF601 /* FeedCacheTestHelpers.swift in Sources */,
 				21F3965D28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift in Sources */,
 				210F2FCF28E1517F00F2231F /* URLSessionHTTPClientTests.swift in Sources */,

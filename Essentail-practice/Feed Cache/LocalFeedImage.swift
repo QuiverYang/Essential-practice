@@ -6,7 +6,7 @@
 //
 
 import Foundation
-public struct LocalFeedImage : Equatable, Codable{
+public struct LocalFeedImage : Equatable{
     public init(id : UUID, description: String?, location: String?, imageURL: URL) {
         self.id = id
         self.description = description

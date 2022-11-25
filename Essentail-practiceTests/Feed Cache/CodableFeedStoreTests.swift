@@ -74,6 +74,7 @@ class CodableFeedStoreTests : XCTestCase {
         let sut = makeSUT()
         expect(sut, toRetrieve: .empty)
     }
+    
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
         expect(sut, toRetrieveTwice: .empty)
@@ -108,6 +109,14 @@ class CodableFeedStoreTests : XCTestCase {
         expect(sut, toRetrieve: .failure(anyNSError()))
     }
     
+    func test_retrieve_hasNoSideEffectsOnFailure() {
+        let storeURL = testSpecificStoreURL()
+        let sut = makeSUT(storeURL: storeURL)
+        
+        try! "ivalid data".write(to: storeURL, atomically: false, encoding: .utf8)
+        
+        expect(sut, toRetrieveTwice: .failure(anyNSError()))
+    }
     //Helpers:
     
     private func makeSUT(storeURL: URL? = nil, file: StaticString = #filePath, line: UInt = #line) -> CodableFeedStore {

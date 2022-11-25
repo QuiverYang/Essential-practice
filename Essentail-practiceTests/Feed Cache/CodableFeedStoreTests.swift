@@ -8,7 +8,7 @@
 import Essentail_practice
 import XCTest
 
-class CodableFeedStore {
+class CodableFeedStore :FeedStore{
     init(storeURL: URL) {
         self.storeURL = storeURL
     }
@@ -36,7 +36,7 @@ class CodableFeedStore {
             return LocalFeedImage(id: id, description: description, location: location, imageURL: imageURL)
         }
     }
-    func retrieve(completion: @escaping FeedStore.RetrieveCompletion) {
+    func retrieve(completion: @escaping RetrieveCompletion) {
         guard let data = try? Data(contentsOf: storeURL) else {
             return completion(.empty)
         }
@@ -49,7 +49,7 @@ class CodableFeedStore {
         }
         
     }
-    func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping FeedStore.InsertionCompletion) {
+    func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
         do {
             let encoder = JSONEncoder()
             let cache = Cache(feed: feed.map(CodableFeedImage.init), timestamp: timestamp)
@@ -62,7 +62,7 @@ class CodableFeedStore {
         
     }
     
-    func deleteCacheFeed(completion: @escaping FeedStore.DeletionCompletion) {
+    func deleteCacheFeed(completion: @escaping DeletionCompletion) {
         guard FileManager.default.fileExists(atPath: storeURL.path) else {
             return completion(nil)
         }

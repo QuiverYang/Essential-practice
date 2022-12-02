@@ -59,8 +59,10 @@ public class CodableFeedStore :FeedStore{
         
     }
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-        let storeURL = self.storeURL
-        queue.async(flags: .barrier) {
+        // 在這裡的storeURL是 value type 所以可以不用擔心retain cycle
+        // 可以直接將直copy取出後放入closure中使用，該closure不擁有self！
+//        let storeURL = self.storeURL
+        queue.async(flags: .barrier) {  [storeURL] in
             do {
                 let encoder = JSONEncoder()
                 let cache = Cache(feed: feed.map(CodableFeedImage.init), timestamp: timestamp)

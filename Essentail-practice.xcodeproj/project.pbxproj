@@ -31,6 +31,7 @@
 		21DF31192939D3D9009AF601 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF31182939D3D9009AF601 /* FeedStoreSpecs.swift */; };
 		21DF311B2939D47C009AF601 /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF311A2939D47C009AF601 /* XCTestCase+FeedStoreSpecs.swift */; };
 		21DF311D2939F518009AF601 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF311C2939F518009AF601 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */; };
+		21DF311F293C5FEA009AF601 /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF311E293C5FEA009AF601 /* XCTestCase+FailableInsertFeedStoreSpecs.swift */; };
 		21F3965828C89387005B08CD /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
 		21F3965D28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F3965C28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift */; };
 		21F3965E28C89387005B08CD /* Essentail_practice.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F3965228C89387005B08CD /* Essentail_practice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -80,6 +81,7 @@
 		21DF31182939D3D9009AF601 /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 		21DF311A2939D47C009AF601 /* XCTestCase+FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		21DF311C2939F518009AF601 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableRetrieveFeedStoreSpecs.swift"; sourceTree = "<group>"; };
+		21DF311E293C5FEA009AF601 /* XCTestCase+FailableInsertFeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableInsertFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		21F3964F28C89387005B08CD /* Essentail_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentail_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F3965228C89387005B08CD /* Essentail_practice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Essentail_practice.h; sourceTree = "<group>"; };
 		21F3965728C89387005B08CD /* Essentail-practiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Essentail-practiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 				21DF305429092628009AF601 /* LoadFeedFromCacheUseCaseTest.swift */,
 				21DF310B2923818F009AF601 /* ValidateCacheUseCaseTests.swift */,
 				21DF3114292CAA18009AF601 /* CodableFeedStoreTests.swift */,
+				21DF311E293C5FEA009AF601 /* XCTestCase+FailableInsertFeedStoreSpecs.swift */,
 				21DF31182939D3D9009AF601 /* FeedStoreSpecs.swift */,
 				21DF311C2939F518009AF601 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift */,
 				21DF311A2939D47C009AF601 /* XCTestCase+FeedStoreSpecs.swift */,
@@ -411,6 +414,7 @@
 				21DF310E2924CACC009AF601 /* FeedCacheTestHelpers.swift in Sources */,
 				21F3965D28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift in Sources */,
 				210F2FCF28E1517F00F2231F /* URLSessionHTTPClientTests.swift in Sources */,
+				21DF311F293C5FEA009AF601 /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */,
 				21DF3057290926FA009AF601 /* FeedStoreSpy.swift in Sources */,
 				210F2FEA28FFA60C00F2231F /* CacheFeedUseCaseTest.swift in Sources */,
 				21DF31102924CB0B009AF601 /* SharedTestHelpers.swift in Sources */,

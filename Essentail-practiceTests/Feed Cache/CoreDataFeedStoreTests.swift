@@ -16,6 +16,9 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
+        let sut = makeSUT()
+        
+        assertThatRetrieveHasNoSideEffectsOnEmptyCache(on: sut)
         
     }
     
@@ -60,7 +63,7 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     //MARK: helpers
-    private func makeSUT(storeURL: URL? = nil, file: StaticString = #filePath, line: UInt = #line) -> FeedStore {
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FeedStore {
         let sut = CoreDataFeedStore()
         trackFroMemoryLeaks(sut, file: file, line: line)
         return sut

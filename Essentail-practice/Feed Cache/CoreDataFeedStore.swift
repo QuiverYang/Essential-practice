@@ -7,8 +7,12 @@
 
 import CoreData
 
-public class CoreDataFeedStore : FeedStore {
-    public init(){}
+public final class CoreDataFeedStore : FeedStore {
+    private let container: NSPersistentContainer
+    
+    public init(bundle: Bundle = .main) throws {
+        container = try NSPersistentContainer.load(modelName: "FeedStore", in: bundle)
+    }
     
     public func retrieve(completion: @escaping RetrieveCompletion) {
         completion(.empty)

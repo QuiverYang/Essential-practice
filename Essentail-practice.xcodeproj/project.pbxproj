@@ -35,6 +35,7 @@
 		21DF3121293C60C9009AF601 /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF3120293C60C9009AF601 /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */; };
 		21DF3147293F2D56009AF601 /* CoreDataFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF3146293F2D56009AF601 /* CoreDataFeedStoreTests.swift */; };
 		21DF3149293F2E5F009AF601 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF3148293F2E5F009AF601 /* CoreDataFeedStore.swift */; };
+		21DF314C293F3087009AF601 /* FeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21DF314A293F3087009AF601 /* FeedStore.xcdatamodeld */; };
 		21F3965828C89387005B08CD /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
 		21F3965D28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F3965C28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift */; };
 		21F3965E28C89387005B08CD /* Essentail_practice.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F3965228C89387005B08CD /* Essentail_practice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -88,6 +89,7 @@
 		21DF3120293C60C9009AF601 /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableDeleteFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		21DF3146293F2D56009AF601 /* CoreDataFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStoreTests.swift; sourceTree = "<group>"; };
 		21DF3148293F2E5F009AF601 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
+		21DF314B293F3087009AF601 /* FeedStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedStore.xcdatamodel; sourceTree = "<group>"; };
 		21F3964F28C89387005B08CD /* Essentail_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentail_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F3965228C89387005B08CD /* Essentail_practice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Essentail_practice.h; sourceTree = "<group>"; };
 		21F3965728C89387005B08CD /* Essentail-practiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Essentail-practiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +174,7 @@
 				21DF30522908E06E009AF601 /* LocalFeedImage.swift */,
 				21DF311229272854009AF601 /* FeedCachePolicy.swift */,
 				21DF311629308D2E009AF601 /* CodableFeedStore.swift */,
+				21DF314A293F3087009AF601 /* FeedStore.xcdatamodeld */,
 				21DF3148293F2E5F009AF601 /* CoreDataFeedStore.swift */,
 			);
 			path = "Feed Cache";
@@ -413,6 +416,7 @@
 				21DF30512908E025009AF601 /* RemoteFeedItem.swift in Sources */,
 				21DF311329272854009AF601 /* FeedCachePolicy.swift in Sources */,
 				21F3966E28D45454005B08CD /* RemoteFeedLoader.swift in Sources */,
+				21DF314C293F3087009AF601 /* FeedStore.xcdatamodeld in Sources */,
 				21DF30532908E06E009AF601 /* LocalFeedImage.swift in Sources */,
 				21DF304F29068961009AF601 /* FeedStore.swift in Sources */,
 				21DF304D29068932009AF601 /* LocalFeedLoader.swift in Sources */,
@@ -751,6 +755,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		21DF314A293F3087009AF601 /* FeedStore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				21DF314B293F3087009AF601 /* FeedStore.xcdatamodel */,
+			);
+			currentVersion = 21DF314B293F3087009AF601 /* FeedStore.xcdatamodel */;
+			path = FeedStore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 21F3964628C89387005B08CD /* Project object */;
 }

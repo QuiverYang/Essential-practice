@@ -24,7 +24,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
         
         insert((feed, timestamp), to: sut)
         
-        expect(sut, toRetrieve: .found(feed: feed, timestamp: timestamp))
+        expect(sut, toRetrieve: .found(feed: feed, timestamp: timestamp), file: file, line: line)
     }
     
     func assertThatRetrieveHasNoSideEffectsOnNonEmptyCache(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
@@ -32,14 +32,14 @@ extension FeedStoreSpecs where Self: XCTestCase {
         let timestamp = Date()
         insert((feed, timestamp), to: sut)
         
-        expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp))
+        expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp), file: file, line: line)
     }
     
     func assertThatInsertionDeleversNoErrorOnEmptyCache(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
         
         let insertionError = insert((uniqueImageFeed().local, Date()), to: sut)
         
-        XCTAssertNil(insertionError, "Expected to insert cache successfully")
+        XCTAssertNil(insertionError, "Expected to insert cache successfully", file: file, line: line)
         
         
     }
@@ -49,7 +49,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
     
         let insertionError = insert((uniqueImageFeed().local, Date()), to: sut)
 
-        XCTAssertNil(insertionError, "Expected to insert cache successfully")
+        XCTAssertNil(insertionError, "Expected to insert cache successfully", file: file, line: line)
     }
     
     func assertTateInsertOverridesPreviewslyInsertedCacheValue(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
@@ -59,27 +59,27 @@ extension FeedStoreSpecs where Self: XCTestCase {
         let latestTimestampe = Date()
         insert((latestFeed, latestTimestampe), to: sut)
         
-        expect(sut, toRetrieve: .found(feed: latestFeed, timestamp: latestTimestampe))
+        expect(sut, toRetrieve: .found(feed: latestFeed, timestamp: latestTimestampe), file: file, line: line)
     }
     
     func assertThatDeleteDeliversNoErrorOnEmptyCache(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
         delete(from: sut)
         
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .empty, file: file, line: line)
         
     }
     func assertThatDeleteHasNoSideEffectsOnEmptyCache(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
         let deletionError = delete(from: sut)
         
-        XCTAssertNil(deletionError, "Expected empty cache deletion succeed")
-        expect(sut, toRetrieve: .empty)
+        XCTAssertNil(deletionError, "Expected empty cache deletion succeed", file: file, line: line)
+        expect(sut, toRetrieve: .empty, file: file, line: line)
     }
     func assertThatDeleteDeliversNoErrorOnNonEmptyCache(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
         insert((uniqueImageFeed().local, Date()), to: sut)
         
         let deletionError = delete(from: sut)
         
-        XCTAssertNil(deletionError, "Expected empty cache deletion succeed")
+        XCTAssertNil(deletionError, "Expected empty cache deletion succeed", file: file, line: line)
         
     }
     func assertThateDeleteEmptyiesPreviouslyInsertedCache(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
@@ -87,7 +87,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
         
         delete(from: sut)
         
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .empty, file: file, line: line)
         
     }
     
@@ -113,7 +113,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
         
         waitForExpectations(timeout: 5.0)
         
-        XCTAssertEqual(completedOperationInOrder, [op1,op2,op3], "Expected side-effects to  run serailly but optertions finished in the wrong order")
+        XCTAssertEqual(completedOperationInOrder, [op1,op2,op3], "Expected side-effects to  run serailly but optertions finished in the wrong order", file: file, line: line)
     }
     
     

@@ -77,7 +77,7 @@ class CodableFeedStoreTests : XCTestCase, FailableFeedStoreSpecs {
     
     func test_insert_overridesPreviouslyInsertionValues() {
         let sut = makeSUT()
-        assertTateInsertOverridesPreviewslyInsertedCacheValue(on: sut)
+        assertThatInsertOverridesPreviewslyInsertedCacheValue(on: sut)
     }
     
     func test_insert_deliversErrorInsertionError() {

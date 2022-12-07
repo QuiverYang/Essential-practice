@@ -36,6 +36,7 @@
 		21DF3147293F2D56009AF601 /* CoreDataFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF3146293F2D56009AF601 /* CoreDataFeedStoreTests.swift */; };
 		21DF3149293F2E5F009AF601 /* CoreDataFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF3148293F2E5F009AF601 /* CoreDataFeedStore.swift */; };
 		21DF314C293F3087009AF601 /* FeedStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21DF314A293F3087009AF601 /* FeedStore.xcdatamodeld */; };
+		21DF315C2940803C009AF601 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF315B2940803C009AF601 /* CoreDataHelpers.swift */; };
 		21F3965828C89387005B08CD /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
 		21F3965D28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F3965C28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift */; };
 		21F3965E28C89387005B08CD /* Essentail_practice.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F3965228C89387005B08CD /* Essentail_practice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -90,6 +91,7 @@
 		21DF3146293F2D56009AF601 /* CoreDataFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStoreTests.swift; sourceTree = "<group>"; };
 		21DF3148293F2E5F009AF601 /* CoreDataFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedStore.swift; sourceTree = "<group>"; };
 		21DF314B293F3087009AF601 /* FeedStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedStore.xcdatamodel; sourceTree = "<group>"; };
+		21DF315B2940803C009AF601 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		21F3964F28C89387005B08CD /* Essentail_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essentail_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F3965228C89387005B08CD /* Essentail_practice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Essentail_practice.h; sourceTree = "<group>"; };
 		21F3965728C89387005B08CD /* Essentail-practiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Essentail-practiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +215,7 @@
 			children = (
 				21DF314A293F3087009AF601 /* FeedStore.xcdatamodeld */,
 				21DF3148293F2E5F009AF601 /* CoreDataFeedStore.swift */,
+				21DF315B2940803C009AF601 /* CoreDataHelpers.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21DF315C2940803C009AF601 /* CoreDataHelpers.swift in Sources */,
 				210F2FCC28DC31F200F2231F /* FeedItemsMapper.swift in Sources */,
 				21F3966B28D30725005B08CD /* FeedLoader.swift in Sources */,
 				21DF30512908E025009AF601 /* RemoteFeedItem.swift in Sources */,

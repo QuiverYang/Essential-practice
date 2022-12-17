@@ -23,19 +23,43 @@ final class EssentialPracticeCacheIntegrationTests: XCTestCase {
         
     }
     func test_load_deliversItemsSavedOnASeparateInstance(){
-            let sutToPerformSave = makeSUT()
-            let sutToPerformLoad = makeSUT()
-            let feed = uniqueImageFeed().models
-            
-            let saveExp = expectation(description: "Wait to save")
-            sutToPerformSave.save(feed) { savedError in
-                XCTAssertNil(savedError, "Expected to save feed successfully")
-                saveExp.fulfill()
-            }
-            wait(for: [saveExp], timeout: 1.0)
-            
-            expect(sutToPerformLoad, toLoad: feed)
+        let sutToPerformSave = makeSUT()
+        let sutToPerformLoad = makeSUT()
+        let feed = uniqueImageFeed().models
+        
+        let saveExp = expectation(description: "Wait to save")
+        sutToPerformSave.save(feed) { savedError in
+            XCTAssertNil(savedError, "Expected to save feed successfully")
+            saveExp.fulfill()
         }
+        wait(for: [saveExp], timeout: 1.0)
+        
+        expect(sutToPerformLoad, toLoad: feed)
+    }
+    
+    func test_save_overridesItemsSavedOnASeparateInstance() {
+        let sutToPerformFirstSave = makeSUT()
+        let sutToPerformLastSave = makeSUT()
+        let sutToPerformLoad = makeSUT()
+        let firstFeed = uniqueImageFeed().models
+        let lastFeed = uniqueImageFeed().models
+        
+        let firstSaveExp = expectation(description: "Wait for save completion")
+        sutToPerformFirstSave.save(firstFeed) { firstSaveError in
+            XCTAssertNil(firstSaveError, "Expected to save feed sucessfully")
+            firstSaveExp.fulfill()
+        }
+        wait(for: [firstSaveExp], timeout: 1.0)
+        
+        let lastSaveExp = expectation(description: "Wait for save completion")
+        sutToPerformLastSave.save(lastFeed) { lastSaveError in
+            XCTAssertNil(lastSaveError, "Expected to save feed sucessfully")
+            lastSaveExp.fulfill()
+        }
+        wait(for: [lastSaveExp], timeout: 1.0)
+        
+        expect(sutToPerformLoad, toLoad: lastFeed)
+    }
 
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> LocalFeedLoader {

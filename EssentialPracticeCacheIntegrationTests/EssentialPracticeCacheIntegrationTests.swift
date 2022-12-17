@@ -10,6 +10,13 @@ import Essentail_practice
 
 final class EssentialPracticeCacheIntegrationTests: XCTestCase {
     
+    override func setUp() {
+        deleteStoreArtifacts()
+    }
+    override func tearDown() {
+        deleteStoreArtifacts()
+    }
+    
     func test_load_deliversNoItemsOnEmptyCache() {
         let sut = makeSUT()
         let exp = expectation(description: "Wait for loading")
@@ -41,5 +48,9 @@ final class EssentialPracticeCacheIntegrationTests: XCTestCase {
     
     private func cachesDirectory() -> URL {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+    }
+    
+    func deleteStoreArtifacts() {
+        try? FileManager.default.removeItem(at: testSpecificStoreURL())
     }
 }

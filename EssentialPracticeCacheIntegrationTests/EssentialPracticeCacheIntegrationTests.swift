@@ -72,7 +72,7 @@ final class EssentialPracticeCacheIntegrationTests: XCTestCase {
         return sut
     }
     
-    private func expect(_ sut: FeedLoader, toLoad expectedFeed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: LocalFeedLoader, toLoad expectedFeed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
 
         sut.load { result in

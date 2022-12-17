@@ -41,6 +41,7 @@
 		21DF3160294080A9009AF601 /* ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF315F294080A9009AF601 /* ManagedFeedImage.swift */; };
 		21DF3168294D8E3B009AF601 /* EssentialPracticeCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF3167294D8E3B009AF601 /* EssentialPracticeCacheIntegrationTests.swift */; };
 		21DF3169294D8E3B009AF601 /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
+		21DF316F294D90A2009AF601 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FD128E2DD6900F2231F /* XCTestCase+MemoryLeakTracking.swift */; };
 		21F3965828C89387005B08CD /* Essentail_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F3964F28C89387005B08CD /* Essentail_practice.framework */; };
 		21F3965D28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F3965C28C89387005B08CD /* LoadFeedFromRemoteUseCases.swift */; };
 		21F3965E28C89387005B08CD /* Essentail_practice.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F3965228C89387005B08CD /* Essentail_practice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -503,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21DF3168294D8E3B009AF601 /* EssentialPracticeCacheIntegrationTests.swift in Sources */,
+				21DF316F294D90A2009AF601 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

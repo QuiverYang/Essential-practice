@@ -7,7 +7,7 @@
 
 import Foundation
 // data transfer object (DTO), API model for now
-internal struct RemoteFeedItem : Decodable{
+struct RemoteFeedItem : Decodable{
     public let id : UUID
     public let description : String?
     public let location : String?

@@ -16,7 +16,7 @@ final public class RemoteFeedLoader : FeedLoader {
         case connectivity
         case invalidData
     }
-    public typealias Result = LoadFeedResult
+    public typealias Result = FeedLoader.Result
     
     public init(url: URL, client: HttpClient) {
         self.url = url
@@ -28,7 +28,7 @@ final public class RemoteFeedLoader : FeedLoader {
             // if not, return to aviod unexpected client get been reiggered
             guard self != nil else {return}
             switch result {
-            case let .success(data, res):
+            case let .success((data, res)):
                 completion(RemoteFeedLoader.map(data, res))
             case .failure:
                 completion(.failure(Error.connectivity))

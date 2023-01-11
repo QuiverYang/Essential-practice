@@ -14,6 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        lfs: true
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Build and tests
-      run: xcodebuild clean build test -project Essentail-practice.xcodeproj -scheme "CI" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+      run: xcodebuild clean build test -project EssentialProject/Essentail-practice.xcodeproj -scheme "CI" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO

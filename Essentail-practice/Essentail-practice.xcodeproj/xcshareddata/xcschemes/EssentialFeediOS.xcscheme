@@ -32,22 +32,21 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "21F6FB8C296FF2B500EF9698"
-            BuildableName = "EssentialFeediOS.framework"
-            BlueprintName = "EssentialFeediOS"
+            BlueprintIdentifier = "21F6FBB2297530D800EF9698"
+            BuildableName = "EssentailPracticeiOSTestsTests.xctest"
+            BlueprintName = "EssentailPracticeiOSTestsTests"
             ReferencedContainer = "container:Essentail-practice.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO"
-            parallelizable = "YES"
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "21F6FB93296FF2B500EF9698"
-               BuildableName = "EssentialFeediOSTests.xctest"
-               BlueprintName = "EssentialFeediOSTests"
+               BlueprintIdentifier = "21F6FBCC2975327300EF9698"
+               BuildableName = "EssentialPracticeiOSTests.xctest"
+               BlueprintName = "EssentialPracticeiOSTests"
                ReferencedContainer = "container:Essentail-practice.xcodeproj">
             </BuildableReference>
          </TestableReference>

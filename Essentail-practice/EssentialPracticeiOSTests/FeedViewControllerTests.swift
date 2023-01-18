@@ -125,7 +125,7 @@ final class FeedViewControllerTests: XCTestCase {
         XCTAssertEqual(view0!.isShowingImageLoadingIndicator, false, "Expected no loading indicator for first view once first image loading completes successfully")
         XCTAssertEqual(view1!.isShowingImageLoadingIndicator, true, "Expected no loading indicator state change for second view once first image loading completes successfully")
         
-        loader.comoleteImageLoadingWithError(at: 1)
+        loader.completeImageLoadingWithError(at: 1)
         XCTAssertEqual(view0!.isShowingImageLoadingIndicator, false, "Expected no loading indicator for first view once second image loading completes with error")
         XCTAssertEqual(view1!.isShowingImageLoadingIndicator, false, "Expected no loading indicator for second view once first image loading completes with error")
         
@@ -153,6 +153,38 @@ final class FeedViewControllerTests: XCTestCase {
         XCTAssertEqual(view0?.renderedImage, imageData0, "Expected no image state change for first view once second image loading completes successfully")
         XCTAssertEqual(view1?.renderedImage, imageData1, "Expected image for second view once second image loading completes successfully")
                                    
+    }
+    
+    func test_feedImageViewRetryButton_isVisibleOnImageURLLoadError() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [makeImage(), makeImage(), makeImage()])
+        
+        let view0 = sut.simulateFeedImageViewVisible(at: 0)
+        let view1 = sut.simulateFeedImageViewVisible(at: 1)
+        let view2 = sut.simulateFeedImageViewVisible(at: 2)
+        XCTAssertEqual(view0!.isShowingRetryAction, false, "Expected no retry action for frist view loading frist image")
+        XCTAssertEqual(view1!.isShowingRetryAction, false, "Expected no retyr action for second view loaidng second image")
+        XCTAssertEqual(view2!.isShowingRetryAction, false, "Expected no retyr action for third view loaidng third image")
+
+        
+        loader.completeImageLoading(at: 0)
+        XCTAssertEqual(view0!.isShowingRetryAction, false, "Expected no retry action for frist view once first loading completes successfully")
+        XCTAssertEqual(view1!.isShowingRetryAction, false, "Expected no retyr action for second view once first image loading completes successfully")
+        XCTAssertEqual(view2!.isShowingRetryAction, false, "Expected no retyr action for third view once first image loading completes successfully")
+        
+        loader.completeImageLoadingWithError(at: 1)
+        XCTAssertEqual(view0!.isShowingRetryAction, false, "Expected no retry action state change for first view once second image loading completes with error")
+        XCTAssertEqual(view1!.isShowingRetryAction, true, "Expected retry action for second view once second view loading completes with error")
+        XCTAssertEqual(view2!.isShowingRetryAction, false, "Expected retry action for third view once third view loading completes with error")
+
+        
+        loader.completeImageLoadingWithError(at: 2)
+        XCTAssertEqual(view0!.isShowingRetryAction, false, "Expected no retry action state change for first view once second image loading completes with error")
+        XCTAssertEqual(view1!.isShowingRetryAction, true, "Expected retry action for second view without state change once third view loading completes with error")
+        XCTAssertEqual(view1!.isShowingRetryAction, true, "Expected retry action for third view once third view loading completes with error")
+        
     }
     
     
@@ -245,7 +277,7 @@ final class FeedViewControllerTests: XCTestCase {
             imageRequests[index].completion(.success(imageData))
         }
         
-        func comoleteImageLoadingWithError(at index: Int) {
+        func completeImageLoadingWithError(at index: Int) {
             let error = NSError(domain: "an error", code: 0)
             imageRequests[index].completion(.failure(error))
         }
@@ -305,6 +337,10 @@ private extension FeedImageCell {
     
     var isShowingImageLoadingIndicator: Bool {
         return feedImageContainer.isShimmering
+    }
+    
+    var isShowingRetryAction: Bool {
+        return !feedImageRetryButton.isHidden
     }
     
     var renderedImage: Data? {

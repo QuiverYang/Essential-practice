@@ -74,14 +74,23 @@ public final class FeedViewController: UITableViewController {
 //            }
             // Result 寫法3
             let data = try? result.get()
-            cell?.feedImageView.image = data.map(UIImage.init) ?? nil
-            cell?.feedImageRetryButton.isHidden = (data != nil)
+            let image = data.map(UIImage.init) ?? nil
+            cell?.feedImageView.image = image
+            cell?.feedImageRetryButton.isHidden = (image != nil)
             cell?.feedImageContainer.stopShimmering()
         }
         return cell
     }
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cancelTask(forRowAt: indexPath)
+    }
+    
+    public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    private func cancelTask(forRowAt indexPath: IndexPath) {
         tasks[indexPath]?.cancel()
         tasks[indexPath] = nil
     }

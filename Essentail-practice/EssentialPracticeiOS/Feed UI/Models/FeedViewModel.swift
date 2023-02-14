@@ -9,27 +9,25 @@ import Foundation
 import Essentail_practice
 
 final class FeedViewModel {
+    
+    typealias Observer<T> = (T) -> Void
     let feedLoader: FeedLoader
     
     init(feedLoader: FeedLoader) {
         self.feedLoader = feedLoader
     }
     
-    var onFeedLoad: (([FeedImage]) -> Void)?
+    var onFeedLoad: Observer<[FeedImage]>?
     
-    var onLoadingStateChanged:((FeedViewModel) -> Void)?
-    
-    private(set) var isLoading: Bool = false {
-        didSet { onLoadingStateChanged?(self) }
-    }
+    var onLoadingStateChanged:Observer<Bool>?
     
     func loadFeed() {
-        isLoading = true
+        onLoadingStateChanged?(true)
         feedLoader.load { [weak self] result in
             if let feed = try? result.get() {
                 self?.onFeedLoad?(feed)
             }
-            self?.isLoading = false
+            self?.onLoadingStateChanged?(false)
         }
     }
 }

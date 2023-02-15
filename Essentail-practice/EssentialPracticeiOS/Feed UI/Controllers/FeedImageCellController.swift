@@ -7,16 +7,15 @@
 
 
 import UIKit
-import Essentail_practice
 
 final class FeedImageCellController {
     
     
-    private var viewModel: FeedImageViewModel
+    private var viewModel: FeedImageViewModel<UIImage>
     
     
-    init(model: FeedImage, imageLoader: FeedImageDataLoader){
-        self.viewModel = FeedImageViewModel(imageLoader: imageLoader, model: model)
+    init(viewModel: FeedImageViewModel<UIImage>){
+        self.viewModel = viewModel
     }
     
     func view() -> UITableViewCell {

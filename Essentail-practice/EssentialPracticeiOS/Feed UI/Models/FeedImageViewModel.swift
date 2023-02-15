@@ -7,19 +7,21 @@
 
 import Foundation
 import Essentail_practice
-import UIKit
 
-final class FeedImageViewModel {
+final class FeedImageViewModel<Image> {
     
     typealias Observer<T> = (T) -> Void
     
     private let imageLoader: FeedImageDataLoader
     private let model: FeedImage
     private var task: FeedImageDataLoaderTask?
+    private let imageTransformer: (Data) -> Image?
 
-    init(imageLoader: FeedImageDataLoader, model: FeedImage) {
+
+    init(imageLoader: FeedImageDataLoader, model: FeedImage,  imageTransformer: @escaping (Data) -> Image?) {
         self.imageLoader = imageLoader
         self.model = model
+        self.imageTransformer = imageTransformer
     }
     
     var location: String? {
@@ -34,7 +36,7 @@ final class FeedImageViewModel {
         return location != nil
     }
     
-    var onImageLoaded: Observer<UIImage>?
+    var onImageLoaded: Observer<Image>?
     var onRetryStateChange: Observer<Bool>?
     var onImageLoadingStateChange: Observer<Bool>?
     
@@ -47,7 +49,7 @@ final class FeedImageViewModel {
     }
     
     private func handle(_ result: FeedImageDataLoader.Result) {
-        if let image = (try? result.get()).flatMap(UIImage.init) {
+        if let image = (try? result.get()).flatMap(imageTransformer) {
             onImageLoaded?(image)
         } else {
             onRetryStateChange?(true)

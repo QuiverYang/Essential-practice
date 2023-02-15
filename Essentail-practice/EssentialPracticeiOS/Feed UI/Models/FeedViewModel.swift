@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 import Essentail_practice
 
 final class FeedViewModel {

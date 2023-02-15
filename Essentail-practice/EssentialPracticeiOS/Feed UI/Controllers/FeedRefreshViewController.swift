@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Essentail_practice
 
 
 final class FeedRefreshController: NSObject {
@@ -15,12 +14,9 @@ final class FeedRefreshController: NSObject {
     
     var viewModel: FeedViewModel
     
-    init(feedLoader: FeedLoader) {
-        self.viewModel = FeedViewModel(feedLoader: feedLoader)
+    init(viewModel: FeedViewModel) {
+        self.viewModel = viewModel
     }
-    
-    var onRefresh:(([FeedImage]) -> Void)?
-    
     @objc func refresh() {
         viewModel.loadFeed()
     }
@@ -32,9 +28,6 @@ final class FeedRefreshController: NSObject {
                 self?.view.beginRefreshing()
             } else {
                 self?.view.endRefreshing()
-            }
-            if let feed = viewModel.feed {
-                self?.onRefresh?(feed)
             }
         }
         

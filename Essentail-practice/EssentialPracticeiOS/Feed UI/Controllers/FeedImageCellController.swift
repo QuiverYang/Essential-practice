@@ -7,7 +7,6 @@
 
 
 import UIKit
-import Essentail_practice
 
 final class FeedImageCellController {
             

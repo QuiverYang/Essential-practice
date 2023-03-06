@@ -8,16 +8,8 @@
 import Foundation
 import Essentail_practice
 
-struct FeedLoadingViewModel {
-    let isLoading: Bool
-}
-
 protocol FeedLoadingView{
-    func display(_ viewModel: FeedLoadingViewModel)
-}
-
-struct FeedViewModelData {
-    let feed: [FeedImage]
+    func display(_ viewModel: FeedLoadingViewModelData)
 }
 
 protocol FeedView {
@@ -35,15 +27,15 @@ final class FeedPresenter {
     }
     
     func didStartLoadingFeed() {
-        loadingView.display(FeedLoadingViewModel(isLoading: true))
+        loadingView.display(FeedLoadingViewModelData(isLoading: true))
     }
     
     func didFinishLoadingFeed(with feed: [FeedImage]) {
         feedView.display(FeedViewModelData(feed: feed))
-        loadingView.display(FeedLoadingViewModel(isLoading: false))
+        loadingView.display(FeedLoadingViewModelData(isLoading: false))
     }
     
     func didFinsihLoadingFeed(with error: Error) {
-        loadingView.display(FeedLoadingViewModel(isLoading: false))
+        loadingView.display(FeedLoadingViewModelData(isLoading: false))
     }
 }

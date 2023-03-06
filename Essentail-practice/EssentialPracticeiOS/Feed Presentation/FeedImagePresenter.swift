@@ -8,18 +8,7 @@
 import Foundation
 import Essentail_practice
 
-struct FeedImageViewModelData<Image> {
-    let description: String?
-    let location: String?
-    
-    let image: Image?
-    let isLoading: Bool
-    let shouldRetry: Bool
-    
-    var hasLocation: Bool {
-        return location != nil
-    }
-}
+
 
 protocol FeedImageView {
     associatedtype Image

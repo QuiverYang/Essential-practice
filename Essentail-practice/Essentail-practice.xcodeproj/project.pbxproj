@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210258B529A4AB9100BE5FA1 /* FeedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210258B429A4AB9100BE5FA1 /* FeedImagePresenter.swift */; };
 		210F2FCA28DC31AD00F2231F /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FC928DC31AD00F2231F /* HTTPClient.swift */; };
 		210F2FCC28DC31F200F2231F /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FCB28DC31F200F2231F /* FeedItemsMapper.swift */; };
 		210F2FCF28E1517F00F2231F /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FCE28E1517F00F2231F /* URLSessionHTTPClientTests.swift */; };
@@ -128,6 +129,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		210258B429A4AB9100BE5FA1 /* FeedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImagePresenter.swift; sourceTree = "<group>"; };
 		210F2FC928DC31AD00F2231F /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		210F2FCB28DC31F200F2231F /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		210F2FCE28E1517F00F2231F /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
@@ -242,6 +244,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210258B829A4AC8900BE5FA1 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				217047B6299D175B00CDD636 /* FeedImageViewModel.swift */,
+				217047B4299D118000CDD636 /* FeedViewModel.swift */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
 		210F2FCD28DC3DF400F2231F /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,9 +296,9 @@
 		21713B54299E014100600D66 /* Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				217047B4299D118000CDD636 /* FeedViewModel.swift */,
-				217047B6299D175B00CDD636 /* FeedImageViewModel.swift */,
+				210258B829A4AC8900BE5FA1 /* MVVM */,
 				21713B55299E02C200600D66 /* FeedPresenter.swift */,
+				210258B429A4AB9100BE5FA1 /* FeedImagePresenter.swift */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -851,6 +862,7 @@
 				217CF6252977BC8400A4AF79 /* UIView+Shimmering.swift in Sources */,
 				21F6FBE429758EDB00EF9698 /* FeedViewController.swift in Sources */,
 				217CF6232976995A00A4AF79 /* FeedImageCell.swift in Sources */,
+				210258B529A4AB9100BE5FA1 /* FeedImagePresenter.swift in Sources */,
 				217047B7299D175B00CDD636 /* FeedImageViewModel.swift in Sources */,
 				217CF6482990EA0500A4AF79 /* FeedImageCellController.swift in Sources */,
 				217047B5299D118000CDD636 /* FeedViewModel.swift in Sources */,

@@ -15,14 +15,10 @@ final class FeedRefreshController: NSObject, FeedLoadingView {
 
     @IBOutlet var view: UIRefreshControl?
 
-    var delegate: FeedRefreshViewControllerDelegate
-    
-    init(delegate: FeedRefreshViewControllerDelegate) {
-        self.delegate = delegate
-    }
+    var delegate: FeedRefreshViewControllerDelegate?
     
     @IBAction func refresh() {
-        delegate.didRequestFeedRefresh()
+        delegate?.didRequestFeedRefresh()
     }
     
     func display(_ viewModel: FeedLoadingViewModelData) {

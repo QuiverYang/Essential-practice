@@ -136,6 +136,9 @@ Locatoin</string>
                             <action selector="refresh" destination="4iu-nY-h3P" eventType="valueChanged" id="PXY-4L-0MV"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="refreshController" destination="4iu-nY-h3P" id="k1M-cn-CTe"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dp-Ag-xps" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <customObject id="4iu-nY-h3P" customClass="FeedRefreshController" customModule="EssentialPracticeiOS" customModuleProvider="target">

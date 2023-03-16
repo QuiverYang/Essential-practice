@@ -8,51 +8,41 @@
 
 import UIKit
 
-final class FeedImageCellController {
-            
-    private let viewModel: FeedImageViewModel<UIImage>
+protocol FeedImageCellControllerDelegate {
+    func didRequestImage()
+    func didCancelImageRequest()
+}
+
+final class FeedImageCellController: FeedImageView {
     
-    init(viewModel: FeedImageViewModel<UIImage>){
-        self.viewModel = viewModel
-    }
+    private let delegate: FeedImageCellControllerDelegate
+    private lazy var cell = FeedImageCell()
     
     func view() -> UITableViewCell {
-        
-        let cell = binded(FeedImageCell())
-        viewModel.loadImageData()
+        delegate.didRequestImage()
         return cell
     }
     
-    func preload() {
-        viewModel.loadImageData()
-        
+    init(delegate: FeedImageCellControllerDelegate) {
+        self.delegate = delegate
     }
     
-    func cancelLoad() {
-        viewModel.cancelImageDataLoad()
-    }
     
-    private func binded(_ cell: FeedImageCell) -> UITableViewCell {
+    func display(_ viewModel: FeedImageViewModelData<UIImage>) {
         cell.locationContainer.isHidden = !viewModel.hasLocation
         cell.locationLabel.text = viewModel.location
         cell.descriptionLabel.text = viewModel.description
-        cell.onRetry = viewModel.loadImageData
-        
-        
-        viewModel.onImageLoad = { [weak cell] image in
-            cell?.feedImageView.image = image
-        }
-        
-        viewModel.onImageLoadingStateChange = { [weak cell] isLoading in
-            cell?.feedImageContainer.isShimmering = isLoading
-        }
-        
-        viewModel.onShouldRetryImageLoadStateChange = {[weak cell] shouldRetry in
-            cell?.feedImageRetryButton.isHidden = !shouldRetry
-        }
-        
-        return cell
+        cell.feedImageView.image = viewModel.image
+        cell.feedImageContainer.isShimmering = viewModel.isLoading
+        cell.feedImageRetryButton.isHidden = !viewModel.shouldRetry
+        cell.onRetry = delegate.didRequestImage
     }
     
+    func preload() {
+        delegate.didRequestImage()
+    }
     
+    func cancelLoad() {
+        delegate.didCancelImageRequest()
+    }
 }

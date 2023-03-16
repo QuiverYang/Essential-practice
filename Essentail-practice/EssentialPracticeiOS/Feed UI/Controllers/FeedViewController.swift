@@ -15,15 +15,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     var tableModel = [FeedImageCellController]() {
         didSet {tableView.reloadData()}
     }
-        
-    convenience init(refreshController: FeedRefreshController) {
-        self.init()
-        self.refreshController = refreshController
-    }
-    
-    convenience init?(coder: NSCoder, refreshController: FeedRefreshController) {
-        self.init(coder: coder)
-        self.refreshController = refreshController
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     public override func viewDidLoad() {

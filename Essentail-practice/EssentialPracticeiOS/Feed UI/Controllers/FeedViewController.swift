@@ -10,7 +10,7 @@ import Essentail_practice
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
 
-    private var refreshController: FeedRefreshController?
+    var refreshController: FeedRefreshController?
         
     var tableModel = [FeedImageCellController]() {
         didSet {tableView.reloadData()}
@@ -18,6 +18,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         
     convenience init(refreshController: FeedRefreshController) {
         self.init()
+        self.refreshController = refreshController
+    }
+    
+    convenience init?(coder: NSCoder, refreshController: FeedRefreshController) {
+        self.init(coder: coder)
         self.refreshController = refreshController
     }
     

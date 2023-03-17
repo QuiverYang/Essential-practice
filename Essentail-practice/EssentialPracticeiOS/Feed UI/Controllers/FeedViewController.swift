@@ -15,6 +15,11 @@ protocol FeedViewControllerDelegate {
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
 
     var delegate: FeedViewControllerDelegate?
+    
+    required init?(coder: NSCoder, delegate: FeedViewControllerDelegate) {
+        super.init(coder: coder)
+        self.delegate = delegate
+    }
         
     var tableModel = [FeedImageCellController]() {
         didSet {tableView.reloadData()}
@@ -46,7 +51,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        cellController(forRowAt: indexPath).view()
+        cellController(forRowAt: indexPath).view(in: tableView)
     }
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {

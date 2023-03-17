@@ -81,6 +81,9 @@ Locatoin</string>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30" weight="bold"/>
                                                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="retryButtonOnTapped" destination="WH2-Y7-zN2" eventType="touchUpInside" id="kpP-pY-FkK"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray3Color"/>
@@ -122,6 +125,14 @@ Locatoin</string>
                                         <constraint firstAttribute="bottomMargin" secondItem="QSk-ac-f2M" secondAttribute="bottom" priority="999" constant="6" id="yg1-Ms-ZeO"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="uSP-bD-xzf" id="DeM-fz-IkV"/>
+                                    <outlet property="feedImageContainer" destination="LcU-ib-ohP" id="21Y-FV-BJ4"/>
+                                    <outlet property="feedImageRetryButton" destination="Cqi-DA-xmf" id="2vz-YK-dBY"/>
+                                    <outlet property="feedImageView" destination="B5h-Xg-AUz" id="TyQ-Dc-pCj"/>
+                                    <outlet property="locationContainer" destination="3bh-VI-Q8e" id="fEF-LK-kpd"/>
+                                    <outlet property="locationLabel" destination="XRm-k8-IaU" id="74E-le-0eQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

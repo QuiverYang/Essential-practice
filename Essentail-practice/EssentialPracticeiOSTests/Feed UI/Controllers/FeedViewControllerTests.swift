@@ -272,6 +272,20 @@ final class FeedViewControllerTests: XCTestCase {
         
     }
     
+    func test_feedImageView_doesNotShowImageDataFromPreviousRequestWhenCellIsReused() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [makeImage(), makeImage()])
+        
+        let view0 = try! XCTUnwrap(sut.simulateFeedImageViewVisible(at:0))
+        view0.prepareForReuse()
+
+        loader.completeImageLoading(with: anyImageData(), at: 0)
+        
+        XCTAssertEqual(view0.renderedImage, .none, "Expected no image state change for reused view once image loading completes successfully")
+        
+    }
+    
     
     // MARKS: - Helpers
     

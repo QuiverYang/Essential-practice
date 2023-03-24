@@ -22,6 +22,8 @@ public final class FeedUIComposer {
         return feedController
     }
     
+    // for practice only
+    // 在ios 13之後可以使用init(coder: NSCoder?...)這個方式，所以可以使用constructor injection
     private static func makeFeedViewController(delegate: FeedViewControllerDelegate?) -> FeedViewController {
         var feedController: FeedViewController?
         let bundle = Bundle(for: FeedViewController.self)

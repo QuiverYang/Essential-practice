@@ -10,21 +10,14 @@ import UIKit
 import Essentail_practice
 import EssentialPracticeiOS
 
-
 final class FeedViewControllerTests: XCTestCase {
 
     func test_feedViewHasTitle() {
         let (sut, _) = makeSUT()
         
         sut.loadViewIfNeeded()
-        
-        let localizedKey = "FEED_VIEW_TITLE"
-        let bundle = Bundle(for: FeedViewController.self)
-        let localizedString = bundle.localizedString(forKey: localizedKey, value: nil, table: "Feed")
-        
-        XCTAssertNotEqual(localizedKey, localizedString, "Expected localized string for key: \(localizedKey)")
-        
-        XCTAssertEqual(sut.title, "My Feed")
+                
+        XCTAssertEqual(sut.title, localized("FEED_VIEW_TITLE"))
     }
     func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()

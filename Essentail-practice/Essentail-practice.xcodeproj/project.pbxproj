@@ -42,6 +42,7 @@
 		21D0A98229E13E7000EA20C1 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21D0A98429E13E7000EA20C1 /* Feed.strings */; };
 		21D0A98629E1420700EA20C1 /* FeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0A98529E1420700EA20C1 /* FeedUIIntegrationTests+Localization.swift */; };
 		21D0A98829E1446400EA20C1 /* UIControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0A98729E1446400EA20C1 /* UIControl+TestHelpers.swift */; };
+		21D0A98D29E145C700EA20C1 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0A98C29E145C700EA20C1 /* FeedLocalizationTests.swift */; };
 		21DF304D29068932009AF601 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF304C29068932009AF601 /* LocalFeedLoader.swift */; };
 		21DF304F29068961009AF601 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF304E29068961009AF601 /* FeedStore.swift */; };
 		21DF30512908E025009AF601 /* RemoteFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DF30502908E025009AF601 /* RemoteFeedItem.swift */; };
@@ -174,6 +175,7 @@
 		21D0A98729E1446400EA20C1 /* UIControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+TestHelpers.swift"; sourceTree = "<group>"; };
 		21D0A98929E144E900EA20C1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		21D0A98A29E1452D00EA20C1 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
+		21D0A98C29E145C700EA20C1 /* FeedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLocalizationTests.swift; sourceTree = "<group>"; };
 		21DF304C29068932009AF601 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		21DF304E29068961009AF601 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		21DF30502908E025009AF601 /* RemoteFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedItem.swift; sourceTree = "<group>"; };
@@ -408,6 +410,14 @@
 			path = Composers;
 			sourceTree = "<group>";
 		};
+		21D0A98B29E145AE00EA20C1 /* Feed Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				21D0A98C29E145C700EA20C1 /* FeedLocalizationTests.swift */,
+			);
+			path = "Feed Presentation";
+			sourceTree = "<group>";
+		};
 		21DF304B29068924009AF601 /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,6 +571,7 @@
 		21F6FBD12975327300EF9698 /* EssentialPracticeiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				21D0A98B29E145AE00EA20C1 /* Feed Presentation */,
 				217CF63E2990DC8700A4AF79 /* Feed UI */,
 			);
 			path = EssentialPracticeiOSTests;
@@ -906,6 +917,7 @@
 			files = (
 				21F6FBD32975327300EF9698 /* FeedUIIntegrationTests.swift in Sources */,
 				217CF6302990CD2300A4AF79 /* UIButton+TestHelpers.swift in Sources */,
+				21D0A98D29E145C700EA20C1 /* FeedLocalizationTests.swift in Sources */,
 				217CF62D2990CCD800A4AF79 /* UIRefreshControl+TestHelpers.swift in Sources */,
 				21D0A98829E1446400EA20C1 /* UIControl+TestHelpers.swift in Sources */,
 				217CF63C2990DBE000A4AF79 /* FeedUIIntegrationTests+Assertions.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 import Essentail_practice
 import EssentialPracticeiOS
 
-final class FeedViewControllerTests: XCTestCase {
+final class FeedUIIntegrationTests: XCTestCase {
 
     func test_feedViewHasTitle() {
         let (sut, _) = makeSUT()

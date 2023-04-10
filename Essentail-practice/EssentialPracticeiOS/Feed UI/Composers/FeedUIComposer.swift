@@ -72,25 +72,6 @@ private final class FeedLoaderPresentationAdaptor: FeedViewControllerDelegate {
     }
 }
 
-private final class WeakRefVirtualProxy<T: AnyObject> {
-    weak var object: T?
-    init(_ object: T) {
-        self.object = object
-    }
-}
-
-extension WeakRefVirtualProxy: FeedLoadingView where T: FeedLoadingView {
-    func display(_ viewModel: FeedLoadingViewModelData) {
-        object?.display(viewModel)
-    }
-}
-
-extension WeakRefVirtualProxy: FeedImageView where T: FeedImageView, T.Image == UIImage {
-    func display(_ viewModel: FeedImageViewModelData<UIImage>) {
-        object?.display(viewModel)
-    }
-}
-
 private final class FeedViewAdaptor: FeedView {
     
     private weak var controller: FeedViewController?

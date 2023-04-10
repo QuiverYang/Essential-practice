@@ -15,17 +15,15 @@ public final class FeedUIComposer {
     
     public static func feedComposeWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
         let presentationAdaptor = FeedLoaderPresentationAdaptor(feedLoader: MainThreadDispatchDecorator(decoratee: feedLoader))
-        let feedController = FeedViewController.makeWith(delegate: presentationAdaptor, title: FeedPresenter.title)
+        let feedController = makeFeedViewController(delegate: presentationAdaptor, title: FeedPresenter.title)
         
         
         presentationAdaptor.presenter = FeedPresenter(feedView: FeedViewAdaptor(controller: feedController, imageLoader: MainThreadDispatchDecorator(decoratee: imageLoader)),
                                                       loadingView: WeakRefVirtualProxy(feedController))
         return feedController
     }
-}
-
-extension FeedViewController {
-    static func makeWith(delegate: FeedViewControllerDelegate, title: String) -> FeedViewController {
+    
+    private static func makeFeedViewController(delegate: FeedViewControllerDelegate, title: String) -> FeedViewController {
         let bundle = Bundle(for: FeedViewController.self)
         let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
         let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
@@ -33,9 +31,9 @@ extension FeedViewController {
         feedController.title = title
         return feedController
     }
-    
+
     // 在ios 13之後可以使用init(coder: NSCoder?...)這個方式，所以可以使用constructor injectio
-    static func makeWith(delegate: FeedViewControllerDelegate?, title: String) -> FeedViewController{
+    private static func makeFeedViewController(delegate: FeedViewControllerDelegate?, title: String) -> FeedViewController{
         var feedController: FeedViewController?
         let bundle = Bundle(for: FeedViewController.self)
         if #available(iOS 13.0, *) {
@@ -50,5 +48,8 @@ extension FeedViewController {
         return feedController!
     }
 }
+
+
+
 
 

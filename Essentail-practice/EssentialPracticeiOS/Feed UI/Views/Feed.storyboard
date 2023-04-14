@@ -19,7 +19,24 @@
                         <view key="tableHeaderView" contentMode="scaleToFill" id="DXL-cG-v1T" customClass="ErrorView" customModule="EssentialPracticeiOS" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3m-g1-Sc7">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="highlightedColor" systemColor="labelColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="q3m-g1-Sc7" firstAttribute="leading" secondItem="DXL-cG-v1T" secondAttribute="leading" id="CcJ-uW-r37"/>
+                                <constraint firstItem="q3m-g1-Sc7" firstAttribute="top" secondItem="DXL-cG-v1T" secondAttribute="top" id="QCe-yc-sQt"/>
+                                <constraint firstAttribute="bottom" secondItem="q3m-g1-Sc7" secondAttribute="bottom" id="sca-Cs-O5v"/>
+                                <constraint firstAttribute="trailing" secondItem="q3m-g1-Sc7" secondAttribute="trailing" id="sr9-MC-dgQ"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="q3m-g1-Sc7" id="N5G-tF-euu"/>
+                            </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="1Ld-WV-uUg">
                             <rect key="frame" x="0.0" y="674" width="393" height="16"/>
@@ -160,6 +177,9 @@ Locatoin</string>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
         <image name="pin" width="10" height="14.333333015441895"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -15,11 +15,13 @@ public final class FeedUIComposer {
     
     public static func feedComposeWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
         let presentationAdaptor = FeedLoaderPresentationAdaptor(feedLoader: MainThreadDispatchDecorator(decoratee: feedLoader))
+        
         let feedController = makeFeedViewController(delegate: presentationAdaptor, title: FeedPresenter.title)
         
-        
-        presentationAdaptor.presenter = FeedPresenter(feedView: FeedViewAdaptor(controller: feedController, imageLoader: MainThreadDispatchDecorator(decoratee: imageLoader)),
-                                                      loadingView: WeakRefVirtualProxy(feedController))
+        presentationAdaptor.presenter =
+        FeedPresenter(feedView: FeedViewAdaptor(controller: feedController,
+                                                imageLoader: MainThreadDispatchDecorator(decoratee: imageLoader)),
+                      loadingView: WeakRefVirtualProxy(feedController))
         return feedController
     }
     

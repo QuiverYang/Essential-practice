@@ -351,8 +351,8 @@
 				210258B429A4AB9100BE5FA1 /* FeedImagePresenter.swift */,
 				2165A44529B5CCEA009EB77C /* FeedImageViewModelData.swift */,
 				2165A44729B5CD1C009EB77C /* FeedLoadingViewModelData.swift */,
-				21D0A98429E13E7000EA20C1 /* Feed.strings */,
 				2110D60D29E9452000C8C625 /* FeedErrorViewModelData.swift */,
+				21D0A98429E13E7000EA20C1 /* Feed.strings */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";

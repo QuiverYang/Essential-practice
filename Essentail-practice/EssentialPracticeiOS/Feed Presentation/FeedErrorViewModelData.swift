@@ -9,4 +9,12 @@ import Foundation
 
 struct FeedErrorViewModelData {
     var message: String?
+    
+    static func noError() -> FeedErrorViewModelData {
+        return FeedErrorViewModelData(message: .none)
+    }
+    
+    static func error(message: String) -> FeedErrorViewModelData {
+        return FeedErrorViewModelData(message: message)
+    }
 }

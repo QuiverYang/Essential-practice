@@ -12,9 +12,15 @@ protocol FeedViewControllerDelegate {
     func didRequestFeedRefresh()
 }
 
+public class ErrorView: UIView {
+    public var message: String?
+}
+
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
 
     var delegate: FeedViewControllerDelegate?
+    
+    public let errorView = ErrorView()
     
     required init?(coder: NSCoder, delegate: FeedViewControllerDelegate) {
         super.init(coder: coder)

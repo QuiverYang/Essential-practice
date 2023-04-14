@@ -20,7 +20,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
     var delegate: FeedViewControllerDelegate?
     
-    public let errorView = ErrorView()
+    @IBOutlet private(set) public var errorView: ErrorView!
     
     required init?(coder: NSCoder, delegate: FeedViewControllerDelegate) {
         super.init(coder: coder)
@@ -49,7 +49,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
     func display(_ viewModel: FeedErrorViewModelData) {
-        errorView.message = viewModel.message
+        errorView?.message = viewModel.message
     }
     
     @IBAction private func refresh() {

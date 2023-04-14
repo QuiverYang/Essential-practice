@@ -38,6 +38,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
     func display(_ viewModel: FeedLoadingViewModelData) {
+        refreshControl?.update(isRefreshing: viewModel.isLoading)
         if viewModel.isLoading {
             refreshControl?.beginRefreshing()
         } else {
@@ -90,3 +91,4 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
 }
+

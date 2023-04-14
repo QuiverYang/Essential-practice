@@ -19,6 +19,7 @@
 		210F2FEA28FFA60C00F2231F /* CacheFeedUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2FE928FFA60C00F2231F /* CacheFeedUseCaseTest.swift */; };
 		2110D60E29E9452000C8C625 /* FeedErrorViewModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D60D29E9452000C8C625 /* FeedErrorViewModelData.swift */; };
 		2110D61029E948FA00C8C625 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D60F29E948FA00C8C625 /* ErrorView.swift */; };
+		2110D61329E9952C00C8C625 /* UIRefreshControl+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2110D61229E9952C00C8C625 /* UIRefreshControl+Helpers.swift */; };
 		2165A44629B5CCEA009EB77C /* FeedImageViewModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165A44529B5CCEA009EB77C /* FeedImageViewModelData.swift */; };
 		2165A44829B5CD1C009EB77C /* FeedLoadingViewModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165A44729B5CD1C009EB77C /* FeedLoadingViewModelData.swift */; };
 		2165A44A29B5CD3E009EB77C /* FeedViewModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165A44929B5CD3E009EB77C /* FeedViewModelData.swift */; };
@@ -157,6 +158,7 @@
 		210F2FE928FFA60C00F2231F /* CacheFeedUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTest.swift; sourceTree = "<group>"; };
 		2110D60D29E9452000C8C625 /* FeedErrorViewModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModelData.swift; sourceTree = "<group>"; };
 		2110D60F29E948FA00C8C625 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		2110D61229E9952C00C8C625 /* UIRefreshControl+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Helpers.swift"; sourceTree = "<group>"; };
 		2165A44529B5CCEA009EB77C /* FeedImageViewModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageViewModelData.swift; sourceTree = "<group>"; };
 		2165A44729B5CD1C009EB77C /* FeedLoadingViewModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoadingViewModelData.swift; sourceTree = "<group>"; };
 		2165A44929B5CD3E009EB77C /* FeedViewModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelData.swift; sourceTree = "<group>"; };
@@ -329,6 +331,17 @@
 			path = "Feed Cache";
 			sourceTree = "<group>";
 		};
+		2110D61129E9944500C8C625 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				217CF6242977BC8400A4AF79 /* UIView+Shimmering.swift */,
+				2165A44F29C4078E009EB77C /* UITableView+dequeueing.swift */,
+				2165A45129C40999009EB77C /* UIImageView+animation.swift */,
+				2110D61229E9952C00C8C625 /* UIRefreshControl+Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		21713B54299E014100600D66 /* Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,12 +369,10 @@
 		217CF6322990CE0400A4AF79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2110D61129E9944500C8C625 /* Helpers */,
 				217CF6222976995A00A4AF79 /* FeedImageCell.swift */,
-				217CF6242977BC8400A4AF79 /* UIView+Shimmering.swift */,
 				2165A44B29C196A6009EB77C /* Feed.storyboard */,
 				2165A44D29C196F9009EB77C /* Feed.xcassets */,
-				2165A44F29C4078E009EB77C /* UITableView+dequeueing.swift */,
-				2165A45129C40999009EB77C /* UIImageView+animation.swift */,
 				2110D60F29E948FA00C8C625 /* ErrorView.swift */,
 			);
 			path = Views;
@@ -923,6 +934,7 @@
 				2110D60E29E9452000C8C625 /* FeedErrorViewModelData.swift in Sources */,
 				21713B56299E02C200600D66 /* FeedPresenter.swift in Sources */,
 				21786DE329E3EEF5002E9CF1 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */,
+				2110D61329E9952C00C8C625 /* UIRefreshControl+Helpers.swift in Sources */,
 				217CF6442990DD9600A4AF79 /* FeedImageDataLoader.swift in Sources */,
 				2165A45029C4078E009EB77C /* UITableView+dequeueing.swift in Sources */,
 				217CF6252977BC8400A4AF79 /* UIView+Shimmering.swift in Sources */,

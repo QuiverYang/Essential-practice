@@ -31,6 +31,14 @@ protocol FeedErrorView {
     func display(_ viewModel: FeedErrorViewModelData)
 }
 
+struct FeedLoadingViewModelData {
+    let isLoading: Bool
+}
+
+protocol FeedLoadingView{
+    func display(_ viewModel: FeedLoadingViewModelData)
+}
+
 
 final class FeedPresenterTest: XCTestCase {
 
@@ -41,12 +49,12 @@ final class FeedPresenterTest: XCTestCase {
         XCTAssertTrue(view.messages.isEmpty, "Expect no view message")
     }
     
-    func test_didStartLoadingFeed_displayNoErrorMessage() {
+    func test_didStartLoadingFeed_displayNoErrorMessageAndStartsLoading() {
         let (presneter, view) = makeSUT()
         
         presneter.didStartLoadingFeed()
         
-        XCTAssertEqual(view.messages, [.display(errorMessage:.none)])
+        XCTAssertEqual(view.messages, [.display(errorMessage:.none), .display(isLoading: true)])
     }
     
     private class ViewSpy: FeedErrorView {
@@ -54,11 +62,12 @@ final class FeedPresenterTest: XCTestCase {
         
         enum Message: Equatable {
             case display(errorMessage: String?)
+            case display(isLoading: Bool)
         }
         func display(_ viewModel: FeedErrorViewModelData) {
             messages.append(.display(errorMessage: viewModel.message))
+            messages.append(.display(isLoading: true))
         }
-
     }
     
     // Helpers:

@@ -11,10 +11,6 @@ public protocol FeedErrorView {
     func display(_ viewModel: FeedErrorViewModelData)
 }
 
-public struct FeedLoadingViewModelData {
-    public let isLoading: Bool
-}
-
 public protocol FeedLoadingView{
     func display(_ viewModel: FeedLoadingViewModelData)
 }

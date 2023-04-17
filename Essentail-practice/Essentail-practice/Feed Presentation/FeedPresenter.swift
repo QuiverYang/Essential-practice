@@ -31,10 +31,6 @@ public protocol FeedLoadingView{
     func display(_ viewModel: FeedLoadingViewModelData)
 }
 
-public struct FeedViewModelData {
-    public let feed: [FeedImage]
-}
-
 public protocol FeedView {
     func display(_ viewModel: FeedViewModelData)
 }

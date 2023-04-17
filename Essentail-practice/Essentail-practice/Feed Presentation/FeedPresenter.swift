@@ -7,18 +7,6 @@
 
 import Foundation
 
-public struct FeedErrorViewModelData {
-    public var message: String?
-    
-    public static func noError() -> FeedErrorViewModelData {
-        return FeedErrorViewModelData(message: .none)
-    }
-    
-    public static func error(message: String) -> FeedErrorViewModelData {
-        return FeedErrorViewModelData(message: message)
-    }
-}
-
 public protocol FeedErrorView {
     func display(_ viewModel: FeedErrorViewModelData)
 }

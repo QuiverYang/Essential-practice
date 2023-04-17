@@ -6,16 +6,21 @@
 //
 
 import XCTest
+import Essentail_practice
 
 class FeedPresenter  {
-    init(errorView: FeedErrorView) {
+    init(errorView: FeedErrorView, loadingView: FeedLoadingView) {
         self.errorView = errorView
+        self.loadingView = loadingView
+        
     }
     
-    var errorView: FeedErrorView
+    private let errorView: FeedErrorView
+    private let loadingView: FeedLoadingView
     
     func didStartLoadingFeed() {
         errorView.display(.noError())
+        loadingView.display(FeedLoadingViewModelData(isLoading: true))
     }
 }
 
@@ -39,6 +44,14 @@ protocol FeedLoadingView{
     func display(_ viewModel: FeedLoadingViewModelData)
 }
 
+struct FeedViewModelData {
+    let feed: [FeedImage]
+}
+
+protocol FeedView {
+    func display(_ viewModel: FeedViewModelData)
+}
+
 
 final class FeedPresenterTest: XCTestCase {
 
@@ -57,7 +70,8 @@ final class FeedPresenterTest: XCTestCase {
         XCTAssertEqual(view.messages, [.display(errorMessage:.none), .display(isLoading: true)])
     }
     
-    private class ViewSpy: FeedErrorView {
+    
+    private class ViewSpy: FeedErrorView,  FeedLoadingView{
         private(set) var messages = Set<Message>()
         
         enum Message: Hashable {
@@ -66,15 +80,21 @@ final class FeedPresenterTest: XCTestCase {
         }
         func display(_ viewModel: FeedErrorViewModelData) {
             messages.insert(.display(errorMessage: viewModel.message))
-            messages.insert(.display(isLoading: true))
         }
+        
+        func display(_ viewModel: FeedLoadingViewModelData) {
+            messages.insert(.display(isLoading: viewModel.isLoading))
+        }
+        
+        
+        
     }
     
     // Helpers:
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedPresenter, view: ViewSpy) {
         let view = ViewSpy()
-        let presenter = FeedPresenter(errorView: view)
+        let presenter = FeedPresenter(errorView: view, loadingView: view)
         trackForMemoryLeaks(presenter)
         trackForMemoryLeaks(view)
         return (presenter, view)

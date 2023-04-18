@@ -20,7 +20,7 @@ public protocol FeedView {
 }
 
 public final class FeedPresenter  {
-    public init(errorView: FeedErrorView, loadingView: FeedLoadingView, feedView: FeedView) {
+    public init(feedView: FeedView,  loadingView: FeedLoadingView, errorView: FeedErrorView) {
         self.errorView = errorView
         self.loadingView = loadingView
         self.feedView = feedView

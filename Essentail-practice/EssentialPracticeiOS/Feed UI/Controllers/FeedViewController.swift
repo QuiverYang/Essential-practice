@@ -37,7 +37,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         refresh()
     }
     
-    func display(_ viewModel: FeedLoadingViewModelData) {
+    public func display(_ viewModel: FeedLoadingViewModelData) {
         refreshControl?.update(isRefreshing: viewModel.isLoading)
         if viewModel.isLoading {
             refreshControl?.beginRefreshing()
@@ -46,7 +46,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         }
     }
     
-    func display(_ viewModel: FeedErrorViewModelData) {
+    public func display(_ viewModel: FeedErrorViewModelData) {
         errorView?.message = viewModel.message
     }
     

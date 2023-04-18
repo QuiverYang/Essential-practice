@@ -85,9 +85,9 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "21F6FB93296FF2B500EF9698"
-               BuildableName = "EssentialFeediOSTests.xctest"
-               BlueprintName = "EssentialFeediOSTests"
+               BlueprintIdentifier = "21F6FBCC2975327300EF9698"
+               BuildableName = "EssentialPracticeiOSTests.xctest"
+               BlueprintName = "EssentialPracticeiOSTests"
                ReferencedContainer = "container:Essentail-practice.xcodeproj">
             </BuildableReference>
          </TestableReference>

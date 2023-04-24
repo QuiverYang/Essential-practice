@@ -10,7 +10,7 @@ import Foundation
 
 final public class RemoteFeedLoader : FeedLoader {
     let url : URL
-    let client : HttpClient
+    let client : HTTPClient
     
     public enum Error : Swift.Error{
         case connectivity
@@ -18,7 +18,7 @@ final public class RemoteFeedLoader : FeedLoader {
     }
     public typealias Result = FeedLoader.Result
     
-    public init(url: URL, client: HttpClient) {
+    public init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }

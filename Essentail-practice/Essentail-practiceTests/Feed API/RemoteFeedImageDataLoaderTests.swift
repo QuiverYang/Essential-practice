@@ -10,18 +10,25 @@ import XCTest
 import Essentail_practice
 
 public final class RemoteFeedImageDataLoader {
-    let client: HttpClient
-    init(client: HttpClient) {
+    let client: HTTPClient
+    init(client: HTTPClient) {
         self.client = client
     }
     
     public enum Error: Swift.Error {
         case invalidData
     }
-
     
-    func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) {
-        client.get(from: url) { [weak self] result in
+    private struct HTTPTaskWrapper: FeedImageDataLoaderTask {
+        let wrapped: HTTPClientTask
+        func cancel() {
+            wrapped.cancel()
+        }
+    }
+
+    @discardableResult
+    func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
+        let task = client.get(from: url) { [weak self] result in
             guard self != nil else { return }
             switch result{
             case let .failure(error):
@@ -35,6 +42,7 @@ public final class RemoteFeedImageDataLoader {
                 
             }
         }
+        return HTTPTaskWrapper(wrapped: task)
     }
 }
 
@@ -155,15 +163,20 @@ final class RemoteFeedImageDataLoaderTests: XCTestCase {
         return (sut, client)
     }
     
-    private final class HTTPClientSpy: HttpClient{
-        var messages = [(url: URL, completion: (HttpClient.Result) -> Void)]()
+    private final class HTTPClientSpy: HTTPClient{
+        var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
         
         var reuqestURLs: [URL] {
             return messages.map { $0.url }
         }
         
-        func get(from url: URL, completion: @escaping (HttpClient.Result) -> Void) {
+        private struct Task: HTTPClientTask {
+            func cancel() {}
+        }
+        
+        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
             messages.append((url, completion))
+            return Task()
         }
         
         func complete(with error: Error, at index: Int = 0) {

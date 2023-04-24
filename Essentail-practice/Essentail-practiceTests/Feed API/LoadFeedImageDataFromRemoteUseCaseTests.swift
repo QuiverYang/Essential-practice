@@ -11,7 +11,7 @@ import Essentail_practice
 
 
 
-final class RemoteFeedImageDataLoaderTests: XCTestCase {
+final class LoadFeedImageDataFromRemoteUseCaseTests: XCTestCase {
     
     func test_init_doesNotPerfomAnyURLRequest() {
         

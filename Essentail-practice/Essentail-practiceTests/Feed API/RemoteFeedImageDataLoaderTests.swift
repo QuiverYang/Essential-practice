@@ -237,9 +237,4 @@ final class RemoteFeedImageDataLoaderTests: XCTestCase {
         }
     }
     
-    private func anyData() -> Data {
-        return Data("any data".utf8)
-    }
-    
-    
 }

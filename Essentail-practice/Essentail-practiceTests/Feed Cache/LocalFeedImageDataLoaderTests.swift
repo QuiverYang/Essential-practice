@@ -40,8 +40,9 @@ final class LocalFeedImageDataLoader: FeedImageDataLoader {
             case let .success(data):
                 guard data != nil else {
                     completion(.failure(Error.notFound))
-                    return 
+                    return
                 }
+                completion(.success(data))
                 return
             }
         }
@@ -88,6 +89,15 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         
     }
     
+    func test_loadImageDataFromURL_deliversStoreDataOnFoundData() {
+        let (sut, store) = makeSUT()
+        let foundData = anyData()
+        expect(sut, toCompleteWith: .success(foundData), when: {
+            store.complete(with: foundData)
+        })
+        
+    }
+    
     //Helpers:
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalFeedImageDataLoader, store: StoreSpy ) {
@@ -113,6 +123,8 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
             switch (receivedResult, expectedResult) {
             case let (.failure(recievedError as LocalFeedImageDataLoader.Error), .failure(expectedError as LocalFeedImageDataLoader.Error)):
                 XCTAssertEqual(recievedError, expectedError, file: file, line: line)
+            case let (.success(recievedData), .success(expectedData)):
+                XCTAssertEqual(recievedData, expectedData)
             default:
                 XCTFail("Expected result \(expectedResult), got \(receivedResult) instead ", file: file, line: line)
             }

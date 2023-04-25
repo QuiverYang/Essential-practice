@@ -87,7 +87,16 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         
         XCTAssertTrue(recievedResults.isEmpty, "expected empty result coming back but got \(recievedResults) instead")
 
+    }
+    
+    func test_saveImageDataFromURL_requestImageDataInsertionForURL() {
+        let (sut, store) = makeSUT()
+        let url = anyURL()
+        let data = anyData()
         
+        sut.save(data, for: url) { _ in }
+        
+        XCTAssertEqual(store.receivedMessages, [.insert(data: data, url: url)])
     }
     
     //Helpers:
@@ -129,8 +138,11 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
     private class StoreSpy: FeedImageDataStore {
 
         
+
+        
         enum Message: Equatable {
             case retrieved(dataFor: URL)
+            case insert(data: Data, url: URL)
         }
         var receivedMessages = [Message]()
         private var completions = [(FeedImageDataStore.Result) -> Void]()
@@ -146,6 +158,10 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         
         func complete(with data: Data?, at index: Int = 0) {
             completions[index](.success(data))
+        }
+        
+        func insert(_ data: Data, for url: URL, completion: @escaping (InsertionResult) -> Void) {
+            receivedMessages.append(.insert(data: data, url: url))
         }
         
     }

@@ -75,7 +75,7 @@ extension LocalFeedImageDataLoader {
         store.insert(data, for: url) { result in
             switch result {
             case .success:
-                break
+                completion(.success(()))
             case .failure(_):
                 completion(.failure(SaveError.fail))
             }

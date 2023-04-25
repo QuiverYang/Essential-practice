@@ -50,7 +50,8 @@ final class LocalFeedImageDataLoader: FeedImageDataLoader {
     
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> Essentail_practice.FeedImageDataLoaderTask {
         let task = Task(completion)
-        store.retrieve(dataForURL: url){ result in
+        store.retrieve(dataForURL: url){ [weak self] result in
+            guard self != nil else { return }
             switch result {
             case .failure:
                 task.complete(with: .failure(Error.fail))
@@ -131,6 +132,23 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         
         
         XCTAssertTrue(recievedResults.isEmpty, "expected empty result coming back but got \(recievedResults) instead")
+    }
+    
+    func test_loadImageDataFromURL_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+        let store = StoreSpy()
+        var sut: LocalFeedImageDataLoader? = LocalFeedImageDataLoader(store: store)
+        
+        var recievedResults = [FeedImageDataStore.Result]()
+        _ = sut?.loadImageData(from: anyURL()){recievedResults.append($0)}
+        
+        sut = nil
+        store.complete(with: anyData())
+        store.complete(with: .none)
+        store.complete(with: anyNSError())
+        
+        XCTAssertTrue(recievedResults.isEmpty, "expected empty result coming back but got \(recievedResults) instead")
+
+        
     }
     
     //Helpers:

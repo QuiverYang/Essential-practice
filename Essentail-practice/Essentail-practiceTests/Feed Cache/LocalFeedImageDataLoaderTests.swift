@@ -32,7 +32,7 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         
         expect(sut, toCompleteWith: fail(), when: {
             let retrivalError = anyNSError()
-            store.complete(with: retrivalError)
+            store.completeRetrieval(with: retrivalError)
         })
         
     }
@@ -41,7 +41,7 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         let (sut, store) = makeSUT()
         
         expect(sut, toCompleteWith: notFound(), when: {
-            store.complete(with: .none)
+            store.completeRetrieval(with: .none)
         })
         
     }
@@ -50,7 +50,7 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         let (sut, store) = makeSUT()
         let foundData = anyData()
         expect(sut, toCompleteWith: .success(foundData), when: {
-            store.complete(with: foundData)
+            store.completeRetrieval(with: foundData)
         })
         
     }
@@ -60,14 +60,14 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         let url = anyURL()
         let foundData = anyData()
         
-        var recievedResults = [FeedImageDataStore.Result]()
+        var recievedResults = [FeedImageDataStore.RetrievalResult]()
         let task = sut.loadImageData(from: url){recievedResults.append($0)}
         task.cancel()
         
         
-        store.complete(with: foundData)
-        store.complete(with: .none)
-        store.complete(with: anyNSError())
+        store.completeRetrieval(with: foundData)
+        store.completeRetrieval(with: .none)
+        store.completeRetrieval(with: anyNSError())
         
         
         XCTAssertTrue(recievedResults.isEmpty, "expected empty result coming back but got \(recievedResults) instead")
@@ -77,13 +77,13 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         let store = StoreSpy()
         var sut: LocalFeedImageDataLoader? = LocalFeedImageDataLoader(store: store)
         
-        var recievedResults = [FeedImageDataStore.Result]()
+        var recievedResults = [FeedImageDataStore.RetrievalResult]()
         _ = sut?.loadImageData(from: anyURL()){recievedResults.append($0)}
         
         sut = nil
-        store.complete(with: anyData())
-        store.complete(with: .none)
-        store.complete(with: anyNSError())
+        store.completeRetrieval(with: anyData())
+        store.completeRetrieval(with: .none)
+        store.completeRetrieval(with: anyNSError())
         
         XCTAssertTrue(recievedResults.isEmpty, "expected empty result coming back but got \(recievedResults) instead")
 
@@ -109,12 +109,12 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         return (sut, store)
     }
     
-    private func fail() -> FeedImageDataStore.Result {
-        .failure(LocalFeedImageDataLoader.Error.fail)
+    private func fail() -> FeedImageDataStore.RetrievalResult {
+        .failure(LocalFeedImageDataLoader.LoadError.fail)
     }
     
-    private func notFound() -> FeedImageDataStore.Result {
-        .failure(LocalFeedImageDataLoader.Error.notFound)
+    private func notFound() -> FeedImageDataStore.RetrievalResult {
+        .failure(LocalFeedImageDataLoader.LoadError.notFound)
     }
     
     private func expect(_ sut: LocalFeedImageDataLoader, toCompleteWith expectedResult: FeedImageDataLoader.Result, when action: ()->Void,file: StaticString = #filePath, line: UInt = #line ) {
@@ -122,7 +122,7 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         
         _ = sut.loadImageData(from: anyURL()) { receivedResult in
             switch (receivedResult, expectedResult) {
-            case let (.failure(recievedError as LocalFeedImageDataLoader.Error), .failure(expectedError as LocalFeedImageDataLoader.Error)):
+            case let (.failure(recievedError as LocalFeedImageDataLoader.LoadError), .failure(expectedError as LocalFeedImageDataLoader.LoadError)):
                 XCTAssertEqual(recievedError, expectedError, file: file, line: line)
             case let (.success(recievedData), .success(expectedData)):
                 XCTAssertEqual(recievedData, expectedData)
@@ -137,27 +137,24 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
     
     private class StoreSpy: FeedImageDataStore {
 
-        
-
-        
         enum Message: Equatable {
             case retrieved(dataFor: URL)
             case insert(data: Data, url: URL)
         }
         var receivedMessages = [Message]()
-        private var completions = [(FeedImageDataStore.Result) -> Void]()
+        private var retrievalCompletions = [(FeedImageDataStore.RetrievalResult) -> Void]()
         
-        func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataStore.Result) -> Void) {
+        func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataStore.RetrievalResult) -> Void) {
             receivedMessages.append(.retrieved(dataFor: url))
-            completions.append(completion)
+            retrievalCompletions.append(completion)
         }
         
-        func complete(with error: Error, at index: Int = 0) {
-            completions[index](.failure(error))
+        func completeRetrieval(with error: Error, at index: Int = 0) {
+            retrievalCompletions[index](.failure(error))
         }
         
-        func complete(with data: Data?, at index: Int = 0) {
-            completions[index](.success(data))
+        func completeRetrieval(with data: Data?, at index: Int = 0) {
+            retrievalCompletions[index](.success(data))
         }
         
         func insert(_ data: Data, for url: URL, completion: @escaping (InsertionResult) -> Void) {

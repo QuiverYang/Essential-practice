@@ -10,10 +10,13 @@ import XCTest
 import Essentail_practice
 
 protocol FeedImageDataStore {
-    func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void)
+    typealias Result = Swift.Result<Data?, Error>
+    
+    func retrieve(dataForURL url: URL, completion: @escaping (Result) -> Void)
 }
 
 final class LocalFeedImageDataLoader: FeedImageDataLoader {
+    
     
     private struct Task: FeedImageDataLoaderTask {
         func cancel() {
@@ -22,6 +25,7 @@ final class LocalFeedImageDataLoader: FeedImageDataLoader {
     }
     enum Error: Swift.Error {
         case fail
+        case notFound
     }
     private var store: FeedImageDataStore
     init(store: FeedImageDataStore) {
@@ -29,8 +33,17 @@ final class LocalFeedImageDataLoader: FeedImageDataLoader {
     }
     
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> Essentail_practice.FeedImageDataLoaderTask {
-        store.retrieve(dataForURL: url){ _ in
-            completion(.failure(Error.fail))
+        store.retrieve(dataForURL: url){ result in
+            switch result {
+            case .failure:
+                completion(.failure(Error.fail))
+            case let .success(data):
+                guard data != nil else {
+                    completion(.failure(Error.notFound))
+                    return 
+                }
+                return
+            }
         }
         return Task()
     }
@@ -66,6 +79,15 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         
     }
     
+    func test_loadImageDataFromURL_deliversNotFoundErrorOnNotFound() {
+        let (sut, store) = makeSUT()
+        
+        expect(sut, toCompleteWith: notFound(), when: {
+            store.complete(with: .none)
+        })
+        
+    }
+    
     //Helpers:
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalFeedImageDataLoader, store: StoreSpy ) {
@@ -76,8 +98,12 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         return (sut, store)
     }
     
-    private func fail() -> LocalFeedImageDataLoader.Result {
+    private func fail() -> FeedImageDataStore.Result {
         .failure(LocalFeedImageDataLoader.Error.fail)
+    }
+    
+    private func notFound() -> FeedImageDataStore.Result {
+        .failure(LocalFeedImageDataLoader.Error.notFound)
     }
     
     private func expect(_ sut: LocalFeedImageDataLoader, toCompleteWith expectedResult: FeedImageDataLoader.Result, when action: ()->Void,file: StaticString = #filePath, line: UInt = #line ) {
@@ -86,7 +112,7 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
         _ = sut.loadImageData(from: anyURL()) { receivedResult in
             switch (receivedResult, expectedResult) {
             case let (.failure(recievedError as LocalFeedImageDataLoader.Error), .failure(expectedError as LocalFeedImageDataLoader.Error)):
-                XCTAssertEqual(recievedError, expectedError)
+                XCTAssertEqual(recievedError, expectedError, file: file, line: line)
             default:
                 XCTFail("Expected result \(expectedResult), got \(receivedResult) instead ", file: file, line: line)
             }
@@ -103,15 +129,19 @@ final class LocalFeedImageDataLoaderTests: XCTestCase {
             case retrieved(dataFor: URL)
         }
         var receivedMessages = [Message]()
-        private var completions = [(FeedImageDataLoader.Result) -> Void]()
+        private var completions = [(FeedImageDataStore.Result) -> Void]()
         
-        func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) {
+        func retrieve(dataForURL url: URL, completion: @escaping (FeedImageDataStore.Result) -> Void) {
             receivedMessages.append(.retrieved(dataFor: url))
             completions.append(completion)
         }
         
         func complete(with error: Error, at index: Int = 0) {
             completions[index](.failure(error))
+        }
+        
+        func complete(with data: Data?, at index: Int = 0) {
+            completions[index](.success(data))
         }
         
     }

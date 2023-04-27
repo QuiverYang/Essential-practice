@@ -60,7 +60,7 @@ final class LoadFeedImageDataFromCacheUseCaseTests: XCTestCase {
         let url = anyURL()
         let foundData = anyData()
         
-        var recievedResults = [FeedImageDataStore.RetrievalResult]()
+        var recievedResults = [FeedImageDataLoader.Result]()
         let task = sut.loadImageData(from: url){recievedResults.append($0)}
         task.cancel()
         
@@ -77,7 +77,7 @@ final class LoadFeedImageDataFromCacheUseCaseTests: XCTestCase {
         let store = FeedImageDataStoreSpy()
         var sut: LocalFeedImageDataLoader? = LocalFeedImageDataLoader(store: store)
         
-        var recievedResults = [FeedImageDataStore.RetrievalResult]()
+        var recievedResults = [FeedImageDataLoader.Result]()
         _ = sut?.loadImageData(from: anyURL()){recievedResults.append($0)}
         
         sut = nil
@@ -98,11 +98,11 @@ final class LoadFeedImageDataFromCacheUseCaseTests: XCTestCase {
         return (sut, store)
     }
     
-    private func fail() -> FeedImageDataStore.RetrievalResult {
+    private func fail() -> FeedImageDataLoader.Result {
         .failure(LocalFeedImageDataLoader.LoadError.fail)
     }
     
-    private func notFound() -> FeedImageDataStore.RetrievalResult {
+    private func notFound() -> FeedImageDataLoader.Result {
         .failure(LocalFeedImageDataLoader.LoadError.notFound)
     }
     

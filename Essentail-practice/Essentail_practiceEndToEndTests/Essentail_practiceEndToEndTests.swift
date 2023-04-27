@@ -43,13 +43,14 @@ class Essentail_practiceEndToEndTests: XCTestCase {
     
     func test_endToEndTestServerGETFeedImageDataResult_matchesFixedTestAccountData() {
         switch getFeedImageDataResult() {
-        case let .success(data):
+        case let .success(data)?:
             XCTAssertFalse(data.isEmpty, "Expected non-empty image data")
-        case let .failure(error):
+        case let .failure(error)?:
             XCTFail("Expected successful feed result but got \(error) instead")
         default:
             XCTFail("Expected successful feed result but got no result")
         }
+        
     }
     
     //Helpers:

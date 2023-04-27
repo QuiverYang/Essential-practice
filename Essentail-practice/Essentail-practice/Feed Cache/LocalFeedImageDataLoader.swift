@@ -29,7 +29,7 @@ extension LocalFeedImageDataLoader: FeedImageDataLoader {
             preventFurtherCompletions()
         }
         
-        func complete(with result: FeedImageDataStore.RetrievalResult) {
+        func complete(with result: FeedImageDataLoader.Result) {
             completion?(result)
         }
         
@@ -55,7 +55,7 @@ extension LocalFeedImageDataLoader: FeedImageDataLoader {
                     task.complete(with: .failure(LoadError.notFound))
                     return
                 }
-                task.complete(with: .success(data))
+                task.complete(with: .success(data!))
                 return
             }
         }

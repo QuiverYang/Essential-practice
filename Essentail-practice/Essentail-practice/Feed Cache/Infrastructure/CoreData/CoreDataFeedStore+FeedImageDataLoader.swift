@@ -12,6 +12,7 @@ extension CoreDataFeedStore: FeedImageDataStore {
     public func insert(_ data: Data, for url: URL, completion: @escaping (FeedImageDataStore.InsertionResult) -> Void) {
         perform { context in
             completion(Result{
+                // 一樣的程式不一樣的寫法
 //                let image = try ManagedFeedImage.first(with: url, in: context)
 //                image?.data = data
 //                try context.save()

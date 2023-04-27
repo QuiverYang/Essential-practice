@@ -17,35 +17,38 @@ final class EssentialPracticeCacheIntegrationTests: XCTestCase {
         deleteStoreArtifacts()
     }
     
+    // MARK: - LocalFeedLoader Tests
     func test_load_deliversNoItemsOnEmptyCache() {
         let sut = makeFeedLoader()
         expect(sut, toLoad: [])
         
     }
-    func test_load_deliversItemsSavedOnASeparateInstance(){
-        let sutToPerformSave = makeFeedLoader()
-        let sutToPerformLoad = makeFeedLoader()
+    func test_loadFeed_deliversItemsSavedOnASeparateInstance(){
+        let feedLoaderToPerformSave = makeFeedLoader()
+        let feedLoaderToPerformLoad = makeFeedLoader()
         let feed = uniqueImageFeed().models
         
-        save(feed, with: sutToPerformSave)
+        save(feed, with: feedLoaderToPerformSave)
         
-        expect(sutToPerformLoad, toLoad: feed)
+        expect(feedLoaderToPerformLoad, toLoad: feed)
     }
     
-    func test_save_overridesItemsSavedOnASeparateInstance() {
-        let sutToPerformFirstSave = makeFeedLoader()
-        let sutToPerformLastSave = makeFeedLoader()
-        let sutToPerformLoad = makeFeedLoader()
+    func test_saveFeed_overridesItemsSavedOnASeparateInstance() {
+        let feedLoaderToPerformFirstSave = makeFeedLoader()
+        let feedLoaderToPerformLastSave = makeFeedLoader()
+        let feedLoaderToPerformLoad = makeFeedLoader()
         let firstFeed = uniqueImageFeed().models
         let lastFeed = uniqueImageFeed().models
         
-        save(firstFeed, with: sutToPerformFirstSave)
+        save(firstFeed, with: feedLoaderToPerformFirstSave)
 
-        save(lastFeed, with: sutToPerformLastSave)
+        save(lastFeed, with: feedLoaderToPerformLastSave)
         
-        expect(sutToPerformLoad, toLoad: lastFeed)
+        expect(feedLoaderToPerformLoad, toLoad: lastFeed)
     }
     
+    
+    // MARK: - LocalFeedImageDataLoader Tests
     func test_loadImageData_deliversSavedDataOnASeparateInstance() {
         let imageLoaderToPerformSave = makeImageLoader()
         let imageLoaderToPerformLoad = makeImageLoader()

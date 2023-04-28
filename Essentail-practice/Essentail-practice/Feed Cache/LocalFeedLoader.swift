@@ -57,8 +57,6 @@ extension LocalFeedLoader {
                 
             case .success:
                 completion(.success([]))
-            @unknown default: break
-
             }
         }
     }

@@ -13,15 +13,15 @@ import EssentialApp
 final class RemoteFeedLoaderWithLocalFallbackCompositesTests: XCTestCase {
     
     func test_load_deliversPrimaryFeedOnPrimaryLoaderSuccess() {
-        let primaryFeed = uniqeFeed()
-        let fallbackFeed = uniqeFeed()
+        let primaryFeed = uniqueFeed()
+        let fallbackFeed = uniqueFeed()
         let sut = makeSUT(primaryResult: .success(primaryFeed), fallbackResult: .success(fallbackFeed))
 
         expect(sut, toCompleteWith: .success(primaryFeed))
     }
     
     func test_load_deliversFallbackFeedOnPrimaryLoaderFailure() {
-        let fallbackFeed = uniqeFeed()
+        let fallbackFeed = uniqueFeed()
         
         let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .success(fallbackFeed))
         
@@ -67,20 +67,9 @@ final class RemoteFeedLoaderWithLocalFallbackCompositesTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    
-    private func uniqeFeed() -> [FeedImage] {
+    func uniqueFeed() -> [FeedImage] {
         return [FeedImage(id: UUID(), description: "", location: "", url: anyURL())]
     }
-    
-    
-    private func anyURL() -> URL {
-        return URL(string: "some-url")!
-    }
-    
-    private func anyNSError() -> NSError {
-        return NSError(domain: "any error", code: 0)
-    }
-                                     
     
     private class LoaderStub: FeedLoader {
         var result: FeedLoader.Result

@@ -31,48 +31,59 @@ final class PrimaryLoaderWithFallbackComposite: FeedLoader {
 final class RemoteFeedLoaderWithLocalFallbackCompositesTests: XCTestCase {
     
     func test_load_deliversPrimaryFeedOnPrimaryLoaderSuccess() {
-        
         let primaryFeed = uniqeFeed()
         let fallbackFeed = uniqeFeed()
-        
-        let localLoader = LoaderStub(result: .success(fallbackFeed))
-        let remoteLoader = LoaderStub(result: .success(primaryFeed))
-        let composer = PrimaryLoaderWithFallbackComposite(primary: remoteLoader, fallback: localLoader)
-        
-        let exp = expectation(description: "wait for load")
-        composer.load { result in
-            switch result {
-            case let .success(feed):
-                XCTAssertEqual(feed, primaryFeed)
-            case .failure:
-                XCTFail("Expected successful load feed result, got \(result) instead")
+        let sut = makeSUT(primaryResult: .success(primaryFeed), fallbackResult: .success(fallbackFeed))
 
-            }
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toCompleteWith: .success(primaryFeed))
     }
     
     func test_load_deliversFallbackFeedOnPrimaryLoaderFailure() {
         let fallbackFeed = uniqeFeed()
         
-        let fallback = LoaderStub(result: .success(fallbackFeed))
-        let primary = LoaderStub(result: .failure(anyNSError()))
-        let composer = PrimaryLoaderWithFallbackComposite(primary: primary, fallback: fallback)
+        let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .success(fallbackFeed))
         
-        let exp = expectation(description: "wait for load")
-        composer.load { result in
-            switch result {
-            case let .success(feed):
-                XCTAssertEqual(feed, fallbackFeed)
-            case .failure:
-                XCTFail("Expected successful load feed result, got \(result) instead")
+        expect(sut, toCompleteWith: .success(fallbackFeed))
+    }
+    
+    //Helpers:
+    
+    private func makeSUT(primaryResult: FeedLoader.Result, fallbackResult: FeedLoader.Result) -> PrimaryLoaderWithFallbackComposite {
+        let fallback = LoaderStub(result: fallbackResult)
+        let primary = LoaderStub(result: primaryResult)
+        let composer = PrimaryLoaderWithFallbackComposite(primary: primary, fallback: fallback)
+        trackForMemoryLeaks(fallback)
+        trackForMemoryLeaks(primary)
+        trackForMemoryLeaks(composer)
+        return composer
+    }
+    
+    private func expect(_ sut: FeedLoader, toCompleteWith expectedResult: FeedLoader.Result, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+        
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedFeed), .success(expectedFeed)):
+                XCTAssertEqual(receivedFeed, expectedFeed, file: file, line: line)
+                
+            case (.failure, .failure):
+                break
+                
+            default:
+                XCTFail("Expected \(expectedResult), got \(receivedResult) instead", file: file, line: line)
             }
+            
             exp.fulfill()
         }
+                
         wait(for: [exp], timeout: 1.0)
     }
     
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
+        }
+    }
     
     
     private func uniqeFeed() -> [FeedImage] {

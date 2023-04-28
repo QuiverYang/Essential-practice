@@ -556,11 +556,10 @@
 		21DF315629407FAC009AF601 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				21FDF60229FB6609003EFCFB /* ManagedObejcts */,
 				21DF314A293F3087009AF601 /* FeedStore.xcdatamodeld */,
 				21DF3148293F2E5F009AF601 /* CoreDataFeedStore.swift */,
 				21DF315B2940803C009AF601 /* CoreDataHelpers.swift */,
-				21DF315D2940808D009AF601 /* ManagedCache.swift */,
-				21DF315F294080A9009AF601 /* ManagedFeedImage.swift */,
 				2110D64929F7CA6900C8C625 /* CoreDataFeedStore+FeedImageDataLoader.swift */,
 				21FDF58329FA2B18003EFCFB /* CoreDataFeedStore+FeedStore.swift */,
 			);
@@ -681,6 +680,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		21FDF60229FB6609003EFCFB /* ManagedObejcts */ = {
+			isa = PBXGroup;
+			children = (
+				21DF315D2940808D009AF601 /* ManagedCache.swift */,
+				21DF315F294080A9009AF601 /* ManagedFeedImage.swift */,
+			);
+			path = ManagedObejcts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

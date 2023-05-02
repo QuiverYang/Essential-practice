@@ -36,10 +36,10 @@ final class RemoteFeedLoaderWithLocalFallbackCompositesTests: XCTestCase {
     
     //Helpers:
     
-    private func makeSUT(primaryResult: FeedLoader.Result, fallbackResult: FeedLoader.Result) -> PrimaryLoaderWithFallbackComposite {
+    private func makeSUT(primaryResult: FeedLoader.Result, fallbackResult: FeedLoader.Result) -> FeedLoaderWithFallbackComposite {
         let fallback = LoaderStub(result: fallbackResult)
         let primary = LoaderStub(result: primaryResult)
-        let composer = PrimaryLoaderWithFallbackComposite(primary: primary, fallback: fallback)
+        let composer = FeedLoaderWithFallbackComposite(primary: primary, fallback: fallback)
         trackForMemoryLeaks(fallback)
         trackForMemoryLeaks(primary)
         trackForMemoryLeaks(composer)

@@ -8,7 +8,7 @@
 import Foundation
 import Essentail_practice
 
-public final class PrimaryLoaderWithFallbackComposite: FeedLoader {
+public final class FeedLoaderWithFallbackComposite: FeedLoader {
     var primary: FeedLoader
     var fallback: FeedLoader
     public init(primary: FeedLoader, fallback: FeedLoader) {

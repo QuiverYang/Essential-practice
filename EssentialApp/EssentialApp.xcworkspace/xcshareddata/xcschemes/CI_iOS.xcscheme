@@ -17,7 +17,21 @@
                BlueprintIdentifier = "21F3964E28C89387005B08CD"
                BuildableName = "Essentail_practice.framework"
                BlueprintName = "Essentail-practice"
-               ReferencedContainer = "container:Essentail-practice.xcodeproj">
+               ReferencedContainer = "container:../Essentail-practice/Essentail-practice.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "21FDF60629FB8596003EFCFB"
+               BuildableName = "EssentialAppTests.xctest"
+               BlueprintName = "EssentialAppTests"
+               ReferencedContainer = "container:EssentialApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,14 +50,21 @@
             BlueprintIdentifier = "21F3964E28C89387005B08CD"
             BuildableName = "Essentail_practice.framework"
             BlueprintName = "Essentail-practice"
-            ReferencedContainer = "container:Essentail-practice.xcodeproj">
+            ReferencedContainer = "container:../Essentail-practice/Essentail-practice.xcodeproj">
          </BuildableReference>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "21F6FB8C296FF2B500EF9698"
-            BuildableName = "EssentialFeediOS.framework"
-            BlueprintName = "EssentialFeediOS"
-            ReferencedContainer = "container:Essentail-practice.xcodeproj">
+            BlueprintIdentifier = "21F6FBC52975327300EF9698"
+            BuildableName = "EssentialPracticeiOS.framework"
+            BlueprintName = "EssentialPracticeiOS"
+            ReferencedContainer = "container:../Essentail-practice/Essentail-practice.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "21FDF5E229FAC1D6003EFCFB"
+            BuildableName = "EssentialApp.app"
+            BlueprintName = "EssentialApp"
+            ReferencedContainer = "container:EssentialApp.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -55,7 +76,7 @@
                BlueprintIdentifier = "21F3965628C89387005B08CD"
                BuildableName = "Essentail-practiceTests.xctest"
                BlueprintName = "Essentail-practiceTests"
-               ReferencedContainer = "container:Essentail-practice.xcodeproj">
+               ReferencedContainer = "container:../Essentail-practice/Essentail-practice.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -66,7 +87,7 @@
                BlueprintIdentifier = "210F2FD828E58CE500F2231F"
                BuildableName = "Essentail_practiceEndToEndTests.xctest"
                BlueprintName = "Essentail_practiceEndToEndTests"
-               ReferencedContainer = "container:Essentail-practice.xcodeproj">
+               ReferencedContainer = "container:../Essentail-practice/Essentail-practice.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -77,7 +98,7 @@
                BlueprintIdentifier = "21DF3164294D8E3B009AF601"
                BuildableName = "EssentialPracticeCacheIntegrationTests.xctest"
                BlueprintName = "EssentialPracticeCacheIntegrationTests"
-               ReferencedContainer = "container:Essentail-practice.xcodeproj">
+               ReferencedContainer = "container:../Essentail-practice/Essentail-practice.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -88,18 +109,17 @@
                BlueprintIdentifier = "21F6FBCC2975327300EF9698"
                BuildableName = "EssentialPracticeiOSTests.xctest"
                BlueprintName = "EssentialPracticeiOSTests"
-               ReferencedContainer = "container:Essentail-practice.xcodeproj">
+               ReferencedContainer = "container:../Essentail-practice/Essentail-practice.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21FDF60629FB8596003EFCFB"
                BuildableName = "EssentialAppTests.xctest"
                BlueprintName = "EssentialAppTests"
-               ReferencedContainer = "container:../EssentialApp/EssentialApp.xcodeproj">
+               ReferencedContainer = "container:EssentialApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -127,7 +147,7 @@
             BlueprintIdentifier = "21F3964E28C89387005B08CD"
             BuildableName = "Essentail_practice.framework"
             BlueprintName = "Essentail-practice"
-            ReferencedContainer = "container:Essentail-practice.xcodeproj">
+            ReferencedContainer = "container:../Essentail-practice/Essentail-practice.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

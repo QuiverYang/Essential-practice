@@ -8,6 +8,7 @@
 import UIKit
 import Essentail_practice
 import EssentialPracticeiOS
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,6 +17,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let remoteURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed/v1/feed")!
+        let session = URLSession(configuration: .ephemeral)
+        let httpClient = URLSessionHTTPClient(session: session)
+        let remoteFeedLoader = RemoteFeedLoader(url: remoteURL, client: httpClient)
+        
+        let localStoreURL = NSPersistentContainer
+            .defaultDirectoryURL()
+            .appendingPathComponent("feed-store.sqlite")
+        let store = try! CoreDataFeedStore(storeURL: localStoreURL)
+        let localFeedLoader = LocalFeedLoader(store: store, currentDate: Date.init)
+        
+        let remoteImageDataLoader = RemoteFeedImageDataLoader(client: httpClient)
+        let localImageDataLoader = LocalFeedImageDataLoader(store: store)
+        
+        let feedViewController = FeedUIComposer.feedComposeWith(feedLoader: FeedLoaderWithFallbackComposite(primary: remoteFeedLoader, fallback: localFeedLoader), imageLoader: FeedImageDataLoaderWithFallbackComposite(primary: remoteImageDataLoader, fallback: localImageDataLoader))
+        
+        window?.rootViewController = feedViewController
         
     }
 

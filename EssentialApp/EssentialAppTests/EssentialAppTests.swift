@@ -37,8 +37,8 @@ final class RemoteFeedLoaderWithLocalFallbackCompositesTests: XCTestCase {
     //Helpers:
     
     private func makeSUT(primaryResult: FeedLoader.Result, fallbackResult: FeedLoader.Result) -> FeedLoaderWithFallbackComposite {
-        let fallback = LoaderStub(result: fallbackResult)
-        let primary = LoaderStub(result: primaryResult)
+        let fallback = FeedLoaderStub(result: fallbackResult)
+        let primary = FeedLoaderStub(result: primaryResult)
         let composer = FeedLoaderWithFallbackComposite(primary: primary, fallback: fallback)
         trackForMemoryLeaks(fallback)
         trackForMemoryLeaks(primary)
@@ -69,19 +69,5 @@ final class RemoteFeedLoaderWithLocalFallbackCompositesTests: XCTestCase {
     
     func uniqueFeed() -> [FeedImage] {
         return [FeedImage(id: UUID(), description: "", location: "", url: anyURL())]
-    }
-    
-    private class LoaderStub: FeedLoader {
-        var result: FeedLoader.Result
-        
-        init(result: FeedLoader.Result) {
-            self.result = result
-        }
-        
-        func load(completion: @escaping (FeedLoader.Result) -> Void) {
-            completion(result)
-        }
-        
-        
     }
 }

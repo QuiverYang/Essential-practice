@@ -66,8 +66,4 @@ final class RemoteFeedLoaderWithLocalFallbackCompositesTests: XCTestCase {
                 
         wait(for: [exp], timeout: 1.0)
     }
-    
-    func uniqueFeed() -> [FeedImage] {
-        return [FeedImage(id: UUID(), description: "", location: "", url: anyURL())]
-    }
 }

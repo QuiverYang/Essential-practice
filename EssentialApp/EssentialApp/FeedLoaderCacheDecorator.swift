@@ -21,7 +21,7 @@ public class FeedLoaderCacheDecorator: FeedLoader {
         
         decoratee?.load{[weak self] result in
             if let feed = try? result.get() {
-                self?.cache?.save(feed){ _ in }
+                self?.cache?.saveIgnoringResult(feed)
             }
             completion(result)
             
@@ -31,5 +31,11 @@ public class FeedLoaderCacheDecorator: FeedLoader {
 //                return feed
 //            })
         }
+    }
+}
+
+private extension FeedCache {
+    func saveIgnoringResult(_ feed: [FeedImage]) {
+        save(feed) { _ in }
     }
 }

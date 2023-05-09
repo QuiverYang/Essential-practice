@@ -24,6 +24,12 @@ class FeedLoaderCacheDecorator: FeedLoader {
                 self?.cache?.save(feed){ _ in }
             }
             completion(result)
+            
+            // 另一種使用map的寫法
+//            completion(result.map { feed in
+//                self?.cache.save(feed) { _ in }
+//                return feed
+//            })
         }
     }
     

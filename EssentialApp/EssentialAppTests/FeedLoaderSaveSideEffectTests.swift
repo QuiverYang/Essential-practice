@@ -32,18 +32,9 @@ class FeedLoaderCacheDecorator: FeedLoader {
 //            })
         }
     }
-    
-
-    
-    
 }
 
-protocol FeedCache {
-    typealias Result = Swift.Result<Void, Error>
-    
-    func save(_ feed: [FeedImage], completion: @escaping (Result) -> Void)
-    
-}
+
 
 
 final class FeedLoaderSaveSideEffectTests: XCTestCase, FeedLoaderTestCase {

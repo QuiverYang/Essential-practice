@@ -10,7 +10,7 @@ import Essentail_practice
 import EssentialApp
 
 
-final class FeedLoaderSaveSideEffectTests: XCTestCase, FeedLoaderTestCase {
+final class FeedLoaderCacheDecoratorTests: XCTestCase, FeedLoaderTestCase {
     
     func test_load_deliversFeedOnLoaderSuccess() {
         let feed = uniqueFeed()

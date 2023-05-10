@@ -22,19 +22,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let session = URLSession(configuration: .ephemeral)
         let httpClient = URLSessionHTTPClient(session: session)
         let remoteFeedLoader = RemoteFeedLoader(url: remoteURL, client: httpClient)
-        
-        let localStoreURL = NSPersistentContainer
-            .defaultDirectoryURL()
-            .appendingPathComponent("feed-store.sqlite")
-        let store = try! CoreDataFeedStore(storeURL: localStoreURL)
-        let localFeedLoader = LocalFeedLoader(store: store, currentDate: Date.init)
-        
+//
+//        let localStoreURL = NSPersistentContainer
+//            .defaultDirectoryURL()
+//            .appendingPathComponent("feed-store.sqlite")
+//        let store = try! CoreDataFeedStore(storeURL: localStoreURL)
+//        let localFeedLoader = LocalFeedLoader(store: store, currentDate: Date.init)
+//
         let remoteImageDataLoader = RemoteFeedImageDataLoader(client: httpClient)
-        let localImageDataLoader = LocalFeedImageDataLoader(store: store)
+//        let localImageDataLoader = LocalFeedImageDataLoader(store: store)
+//
+//        let feedViewController = FeedUIComposer.feedComposeWith(feedLoader: FeedLoaderWithFallbackComposite(primary: remoteFeedLoader, fallback: localFeedLoader), imageLoader: FeedImageDataLoaderWithFallbackComposite(primary: remoteImageDataLoader, fallback: localImageDataLoader))
         
-        let feedViewController = FeedUIComposer.feedComposeWith(feedLoader: FeedLoaderWithFallbackComposite(primary: remoteFeedLoader, fallback: localFeedLoader), imageLoader: FeedImageDataLoaderWithFallbackComposite(primary: remoteImageDataLoader, fallback: localImageDataLoader))
+        let feedViewController = FeedUIComposer.feedComposeWith(feedLoader: remoteFeedLoader, imageLoader: remoteImageDataLoader)
         
         window?.rootViewController = feedViewController
+        
         
     }
 

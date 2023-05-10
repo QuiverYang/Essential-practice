@@ -10,7 +10,7 @@ import Essentail_practice
 import EssentialApp
 
 
-final class RemoteFeedLoaderWithLocalFallbackCompositesTests: XCTestCase, FeedLoaderTestCase {
+final class FeedLoaderWithFallbackCompositeTests: XCTestCase, FeedLoaderTestCase {
     
     func test_load_deliversPrimaryFeedOnPrimaryLoaderSuccess() {
         let primaryFeed = uniqueFeed()

@@ -8,18 +8,12 @@
 import XCTest
 import Essentail_practice
 
-protocol FeedImageCache {
-    typealias SaveResult = Swift.Result<Void, Swift.Error>
-    
-    func save(_ data: Data, for url: URL, completion: @escaping (SaveResult) -> Void)
-}
-
 class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
     
     var decoratee: FeedImageDataLoader
-    var cache: FeedImageCache
+    var cache: FeedImageDataCache
     
-    init(decoratee: FeedImageDataLoader, cache: FeedImageCache) {
+    init(decoratee: FeedImageDataLoader, cache: FeedImageDataCache) {
         self.decoratee = decoratee
         self.cache = cache
     }
@@ -113,7 +107,7 @@ final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoa
         return (sut, loader)
     }
         
-    private class CacheSpy: FeedImageCache {
+    private class CacheSpy: FeedImageDataCache {
         enum Message: Equatable {
             case save(data: Data, for: URL)
         }

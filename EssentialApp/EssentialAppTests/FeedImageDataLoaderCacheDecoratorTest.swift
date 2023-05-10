@@ -7,28 +7,9 @@
 
 import XCTest
 import Essentail_practice
+import EssentialApp
 
-class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
-    
-    var decoratee: FeedImageDataLoader
-    var cache: FeedImageDataCache
-    
-    init(decoratee: FeedImageDataLoader, cache: FeedImageDataCache) {
-        self.decoratee = decoratee
-        self.cache = cache
-    }
-    
-    func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> Essentail_practice.FeedImageDataLoaderTask {
-        return decoratee.loadImageData(from: url) { [weak self] result in
-            if let data = try? result.get() {
-                self?.cache.save(data, for: url) { _ in }
-            }
-            completion(result)
-        }
-    }
-    
-    
-}
+
 
 final class FeedImageDataLoaderCacheDecoratorTests: XCTestCase, FeedImageDataLoaderTestCase {
     func test_init_doesNotLoadImageData() {

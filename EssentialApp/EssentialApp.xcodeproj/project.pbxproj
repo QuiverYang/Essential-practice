@@ -16,6 +16,7 @@
 		214813F12A0B37B3004852A1 /* FeedImageDataLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214813F02A0B37B3004852A1 /* FeedImageDataLoaderCacheDecorator.swift */; };
 		214814082A0B8BF7004852A1 /* EssentialAppUIAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214814072A0B8BF7004852A1 /* EssentialAppUIAcceptanceTests.swift */; };
 		2148140A2A0B8BF7004852A1 /* EssentialAppUIAcceptanceTestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214814092A0B8BF7004852A1 /* EssentialAppUIAcceptanceTestsLaunchTests.swift */; };
+		214814112A0F2E6B004852A1 /* DebuggingSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214814102A0F2E6B004852A1 /* DebuggingSceneDelegate.swift */; };
 		21FDF5E729FAC1D6003EFCFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FDF5E629FAC1D6003EFCFB /* AppDelegate.swift */; };
 		21FDF5E929FAC1D6003EFCFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FDF5E829FAC1D6003EFCFB /* SceneDelegate.swift */; };
 		21FDF5EB29FAC1D6003EFCFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FDF5EA29FAC1D6003EFCFB /* ViewController.swift */; };
@@ -78,6 +79,7 @@
 		214814052A0B8BF7004852A1 /* EssentialAppUIAcceptanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialAppUIAcceptanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		214814072A0B8BF7004852A1 /* EssentialAppUIAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialAppUIAcceptanceTests.swift; sourceTree = "<group>"; };
 		214814092A0B8BF7004852A1 /* EssentialAppUIAcceptanceTestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialAppUIAcceptanceTestsLaunchTests.swift; sourceTree = "<group>"; };
+		214814102A0F2E6B004852A1 /* DebuggingSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggingSceneDelegate.swift; sourceTree = "<group>"; };
 		21FDF5E329FAC1D6003EFCFB /* EssentialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FDF5E629FAC1D6003EFCFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21FDF5E829FAC1D6003EFCFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				21FDF61429FBB231003EFCFB /* FeedImageDataLoaderWithFallbackComposite.swift */,
 				214813E62A0A383E004852A1 /* FeedLoaderCacheDecorator.swift */,
 				214813F02A0B37B3004852A1 /* FeedImageDataLoaderCacheDecorator.swift */,
+				214814102A0F2E6B004852A1 /* DebuggingSceneDelegate.swift */,
 			);
 			path = EssentialApp;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				21FDF61129FB99C5003EFCFB /* FeedLoaderWithFallbackComposite.swift in Sources */,
 				21FDF5E729FAC1D6003EFCFB /* AppDelegate.swift in Sources */,
 				214813E72A0A383E004852A1 /* FeedLoaderCacheDecorator.swift in Sources */,
+				214814112A0F2E6B004852A1 /* DebuggingSceneDelegate.swift in Sources */,
 				21FDF5E929FAC1D6003EFCFB /* SceneDelegate.swift in Sources */,
 				21FDF61629FBB249003EFCFB /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */,
 				214813F12A0B37B3004852A1 /* FeedImageDataLoaderCacheDecorator.swift in Sources */,

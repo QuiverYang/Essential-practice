@@ -9,12 +9,12 @@
 import UIKit
 import Essentail_practice
 
-protocol FeedImageCellControllerDelegate {
+public protocol FeedImageCellControllerDelegate {
     func didRequestImage()
     func didCancelImageRequest()
 }
 
-final class FeedImageCellController: FeedImageView {
+public final class FeedImageCellController: FeedImageView {
     
     private let delegate: FeedImageCellControllerDelegate
     private var cell: FeedImageCell?
@@ -25,12 +25,12 @@ final class FeedImageCellController: FeedImageView {
         return cell!
     }
     
-    init(delegate: FeedImageCellControllerDelegate) {
+    public init(delegate: FeedImageCellControllerDelegate) {
         self.delegate = delegate
     }
     
     
-    func display(_ viewModel: FeedImageViewModelData<UIImage>) {
+    public func display(_ viewModel: FeedImageViewModelData<UIImage>) {
         cell?.locationContainer.isHidden = !viewModel.hasLocation
         cell?.locationLabel.text = viewModel.location
         cell?.descriptionLabel.text = viewModel.description

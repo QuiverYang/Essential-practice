@@ -8,6 +8,7 @@
 import Foundation
 import Essentail_practice
 import UIKit
+import EssentialPracticeiOS
 
 final class WeakRefVirtualProxy<T: AnyObject> {
     weak var object: T?

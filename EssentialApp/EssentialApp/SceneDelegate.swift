@@ -7,7 +7,6 @@
 
 import UIKit
 import Essentail_practice
-import EssentialPracticeiOS
 import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

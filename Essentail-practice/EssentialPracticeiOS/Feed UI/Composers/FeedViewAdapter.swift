@@ -8,6 +8,7 @@
 import Foundation
 import Essentail_practice
 import UIKit
+import EssentialPracticeiOS
 
 final class FeedViewAdaptor: FeedView {
     
@@ -20,11 +21,11 @@ final class FeedViewAdaptor: FeedView {
     }
     
     func display(_ viewModel: Essentail_practice.FeedViewModelData) {
-        controller?.tableModel = viewModel.feed.map { model in
+        controller?.display(viewModel.feed.map { model in
             let adpator = FeedImageDataLoaderPresentationAdapter<WeakRefVirtualProxy<FeedImageCellController>, UIImage>(model: model, imageLoader: imageLoader)
             let view = FeedImageCellController(delegate: adpator)
             adpator.presenter = FeedImagePresenter(view: WeakRefVirtualProxy(view), imageTransformer: UIImage.init)
             return view
-        }
+        })
     }
 }

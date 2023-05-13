@@ -7,6 +7,7 @@
 
 import Foundation
 import Essentail_practice
+import EssentialPracticeiOS
 
 final class FeedLoaderPresentationAdaptor: FeedViewControllerDelegate {
     private let feedLoader: FeedLoader

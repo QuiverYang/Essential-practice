@@ -8,33 +8,37 @@
 import UIKit
 import Essentail_practice
 
-protocol FeedViewControllerDelegate {
+public protocol FeedViewControllerDelegate {
     func didRequestFeedRefresh()
 }
 
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {
 
-    var delegate: FeedViewControllerDelegate?
+    public var delegate: FeedViewControllerDelegate?
     
     @IBOutlet private(set) public var errorView: ErrorView!
     
-    required init?(coder: NSCoder, delegate: FeedViewControllerDelegate) {
+    public required init?(coder: NSCoder, delegate: FeedViewControllerDelegate) {
         super.init(coder: coder)
         self.delegate = delegate
     }
         
-    var tableModel = [FeedImageCellController]() {
+    private var tableModel = [FeedImageCellController]() {
         didSet { tableView.reloadData() }
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
+    }
+    
+    public func display(_ controllers: [FeedImageCellController]) {
+        tableModel = controllers
     }
     
     public func display(_ viewModel: FeedLoadingViewModelData) {

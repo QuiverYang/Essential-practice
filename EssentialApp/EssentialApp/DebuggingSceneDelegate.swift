@@ -9,7 +9,8 @@
 import UIKit
 import Essentail_practice
 
-
+// 這段code 因為不使用UI test, 所以不需要在繼承SceneDelegate去分別debug下的動作
+/*
 class DebuggingSceneDelegate: SceneDelegate {
     override func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -85,4 +86,7 @@ private class DebuggingHTTPClient: HTTPClient {
         ]])
     }
 }
+
+
+ */
 #endif

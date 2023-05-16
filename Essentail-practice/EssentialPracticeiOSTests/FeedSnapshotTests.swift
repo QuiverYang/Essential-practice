@@ -25,7 +25,7 @@ final class FeedSnapshotTests: XCTestCase {
         sut.display(feedWithContent())
         
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_CONTENT_light")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_CONTENT_dark")
+        record(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_CONTENT_dark")
     }
     
     func test_feedWithErrorMessage() {
@@ -52,6 +52,8 @@ final class FeedSnapshotTests: XCTestCase {
     private func makeSUT() -> FeedViewController {
         let bundle = Bundle(for: FeedViewController.self)
         let controller = UIStoryboard(name: "Feed", bundle: bundle).instantiateInitialViewController() as! FeedViewController
+        controller.tableView.showsVerticalScrollIndicator = false
+        controller.tableView.showsHorizontalScrollIndicator = false
         controller.loadViewIfNeeded()
         return controller
     }

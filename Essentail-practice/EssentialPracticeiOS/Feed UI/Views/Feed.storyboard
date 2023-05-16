@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lf4-4j-OCr">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,16 +12,16 @@
         <scene sceneID="Zsr-gs-Itx">
             <objects>
                 <tableViewController id="lf4-4j-OCr" customClass="FeedViewController" customModule="EssentialPracticeiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Zgr-oV-stQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zgr-oV-stQ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="DXL-cG-v1T" customClass="ErrorView" customModule="EssentialPracticeiOS" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="16"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3m-g1-Sc7">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="16"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3m-g1-Sc7">
+                                    <rect key="frame" x="0.0" y="8" width="393" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="highlightedColor" systemColor="labelColor"/>
@@ -31,8 +30,8 @@
                             <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="q3m-g1-Sc7" firstAttribute="leading" secondItem="DXL-cG-v1T" secondAttribute="leading" id="CcJ-uW-r37"/>
-                                <constraint firstItem="q3m-g1-Sc7" firstAttribute="top" secondItem="DXL-cG-v1T" secondAttribute="top" id="QCe-yc-sQt"/>
-                                <constraint firstAttribute="bottom" secondItem="q3m-g1-Sc7" secondAttribute="bottom" id="sca-Cs-O5v"/>
+                                <constraint firstItem="q3m-g1-Sc7" firstAttribute="top" secondItem="DXL-cG-v1T" secondAttribute="top" constant="8" id="QCe-yc-sQt"/>
+                                <constraint firstAttribute="bottom" secondItem="q3m-g1-Sc7" secondAttribute="bottom" constant="8" id="sca-Cs-O5v"/>
                                 <constraint firstAttribute="trailing" secondItem="q3m-g1-Sc7" secondAttribute="trailing" id="sr9-MC-dgQ"/>
                             </constraints>
                             <connections>
@@ -41,13 +40,13 @@
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="1Ld-WV-uUg">
-                            <rect key="frame" x="0.0" y="674" width="393" height="16"/>
+                            <rect key="frame" x="0.0" y="692" width="393" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="580" id="WH2-Y7-zN2" customClass="FeedImageCell" customModule="EssentialPracticeiOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="66" width="393" height="580"/>
+                                <rect key="frame" x="0.0" y="84" width="393" height="580"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WH2-Y7-zN2" id="7s3-pS-Tx3">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="580"/>

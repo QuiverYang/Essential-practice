@@ -17,5 +17,6 @@ public struct FeedImageViewModelData<Image> {
     public var hasLocation: Bool {
         return location != nil
     }
+
     
 }

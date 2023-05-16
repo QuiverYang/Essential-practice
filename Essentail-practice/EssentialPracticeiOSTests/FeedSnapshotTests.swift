@@ -142,14 +142,7 @@ final class FeedSnapshotTests: XCTestCase {
 
 }
 
-extension UIViewController {
-    func snapshot() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
-        return renderer.image { action in
-            view.layer.render(in: action.cgContext)
-        }
-    }
-}
+
 
 private extension FeedViewController {
     func display(_ stubs: [ImageStub]) {
@@ -162,6 +155,7 @@ private extension FeedViewController {
         display(cells)
     }
 }
+
 
 private class ImageStub: FeedImageCellControllerDelegate {
     var viewModel: FeedImageViewModelData<UIImage>

@@ -137,6 +137,9 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(view1!.isShowingImageLoadingIndicator, false, "Expected no loading indicator for second view once first image loading completes with error")
         
 
+        view1?.simulateRetryAction()
+        XCTAssertEqual(view0?.isShowingImageLoadingIndicator, false, "Expected no loading indicator state change for first view once second image loading completes with error")
+        XCTAssertEqual(view1?.isShowingImageLoadingIndicator, true, "Expected loading indicator state change for second view on retry action")
     }
     
     func test_feedImageView_rendersImageLoadedFromURL() {
@@ -193,6 +196,7 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(view2!.isShowingRetryAction, true, "Expected retry action for third view once third view loading completes with error")
         
     }
+
     
     func test_feedImageViewRetryButton_isVisibleOnInvalidImageData() {
         let (sut, loader) = makeSUT()

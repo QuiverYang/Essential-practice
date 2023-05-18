@@ -85,6 +85,25 @@ final class FeedUIIntegrationTests: XCTestCase {
         loader.completeFeedLoading(with: [], at: 1)
         assertThat(sut, isRendering: [])
         
+    }
+    
+    func test_loadFeedCompletion_rendersSuccessfullyLoadedMoreFeedsAfterLessFeed() {
+        let (sut, loader) = makeSUT()
+        let image0 = makeImage(url: URL(string: "http://url-0.com")!)
+        let image1 = makeImage(url: URL(string: "http://url-1.com")!)
+        let image2 = makeImage(url: URL(string: "http://url-2.com")!)
+
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [image0, image1], at: 0)
+        assertThat(sut, isRendering: [image0, image1])
+        
+        sut.simulateUserInitiatedFeedReload()
+//        sut.tableView.enforceLayoutCycle()
+        loader.completeFeedLoading(with: [image2], at: 1)
+        XCTAssertEqual(loader.canceledImageURLs, [image0.url, image1.url],"Expected first cancell ed image URL request once first image is not near visible")
+        
+        sut.simulateFeedImageViewNotVisible(at: 0)
+        XCTAssertEqual(loader.canceledImageURLs, [image0.url, image1.url, image2.url], "Expected one cancelled image URL request once first image is not visible")
         
     }
     

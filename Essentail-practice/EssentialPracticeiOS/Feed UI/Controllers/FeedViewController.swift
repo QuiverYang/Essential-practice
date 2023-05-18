@@ -26,7 +26,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         self.delegate = delegate
     }
         
-    private var tableModel = [FeedImageCellController]() {
+    public var tableModel = [FeedImageCellController]() {
         didSet { tableView.reloadData() }
     }
 
@@ -76,6 +76,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        guard indexPath.row < tableModel.count else { return }
         cancelCellControllerLoad(forRowAt: indexPath)
     }
     
@@ -91,6 +92,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         let controller = tableModel[indexPath.row]
         loadingControllers[indexPath] = controller
         return controller
+//        return tableModel[indexPath.row]
     }
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
@@ -102,6 +104,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
     private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
+//        cellController(forRowAt: indexPath).cancelLoad()
         loadingControllers[indexPath]?.cancelLoad()
         loadingControllers[indexPath] = nil
     }

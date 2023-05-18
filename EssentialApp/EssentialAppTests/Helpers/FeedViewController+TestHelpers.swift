@@ -11,6 +11,12 @@ import EssentialPracticeiOS
 extension FeedViewController {
     func simulateUserInitiatedFeedReload() {
         refreshControl?.simulatePullToRefresh()
+        let delegate = tableView.delegate
+        // get tableModel every index
+        for row in tableModel.indices {
+            delegate?.tableView?(tableView, didEndDisplaying: UITableViewCell(), forRowAt: IndexPath(row: row, section: feedImagesSection))
+        }
+        
     }
     
     @discardableResult

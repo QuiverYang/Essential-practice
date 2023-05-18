@@ -195,6 +195,10 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(view1!.isShowingRetryAction, true, "Expected retry action for second view without state change once third view loading completes with error")
         XCTAssertEqual(view2!.isShowingRetryAction, true, "Expected retry action for third view once third view loading completes with error")
         
+        view1?.simulateRetryAction()
+        XCTAssertEqual(view0?.isShowingRetryAction, false, "Expected no retry action state change for first view on  second image retry")
+        XCTAssertEqual(view1?.isShowingRetryAction, false, "Expected no retry action for second view on retry")
+        XCTAssertEqual(view2!.isShowingRetryAction, true, "Expected retry action for third view once third view loading completes with error")
     }
 
     
